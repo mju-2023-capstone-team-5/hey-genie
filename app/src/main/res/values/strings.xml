@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Sopar</string>
+
+    //navigation
+    <string name="fragment_home">Home</string>
+    <string name="fragment_my_page">My Page</string>
+    <string name="fragment_setting">Settings</string>
 </resources>
