@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setSupportActionBar(findViewById(R.id.toolbar))
         setJetpackNavigation()
 
     }
