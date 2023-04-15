@@ -24,7 +24,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders["NATIVE_APP_KEY"] = properties['native_app_key']
+        manifestPlaceholders["NATIVE_APP_KEY"] = properties['NATIVE_APP_KEY']
     }
 
     buildTypes {
