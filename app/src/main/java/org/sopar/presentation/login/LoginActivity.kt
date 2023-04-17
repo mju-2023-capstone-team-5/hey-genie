@@ -1,8 +1,13 @@
 package org.sopar.presentation.login
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.animation.doOnEnd
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,6 +22,7 @@ class LoginActivity: AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         init()
@@ -32,6 +38,20 @@ class LoginActivity: AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 loginViewModel.loginWithKakao(this@LoginActivity)
             }
+        }
+
+        this.splashScreen.setOnExitAnimationListener { splashScreenView ->
+            val slideUp = ObjectAnimator.ofFloat(
+                splashScreenView,
+                View.TRANSLATION_Y,
+                0f,
+                -splashScreenView.height.toFloat()
+            )
+            slideUp.interpolator = AnticipateInterpolator()
+            slideUp.duration = 200L
+
+            slideUp.doOnEnd { splashScreenView.remove() }
+            slideUp.start()
         }
     }
 
