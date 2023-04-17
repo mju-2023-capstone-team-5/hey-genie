@@ -25,6 +25,7 @@
                     android:scheme="kakao${NATIVE_APP_KEY}" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.signUp.SignUpActivity"/>
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true">
