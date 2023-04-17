@@ -1,15 +1,3 @@
 <resources>
     <string name="app_name">Sopar</string>
-
-    //navigation
-    <string name="fragment_home">Home</string>
-    <string name="fragment_my_page">My Page</string>
-    <string name="fragment_setting">Settings</string>
-
-    //login
-    <string name="sign_up">처음이신가요?</string>
-
-    //dialog
-    <string name="base_ok">확인</string>
-    <string name="base_error">오류가 발생했습니다!\n 다시 시도해주세요!🥲</string>
 </resources>
