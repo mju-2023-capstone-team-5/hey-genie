@@ -12,9 +12,6 @@
     <string name="fragment_my_page">My Page</string>
     <string name="fragment_setting">Settings</string>
 
-    //login
-    <string name="sign_up">처음이신가요?</string>
-
     //signUp
     <string name="sign_up_info">회원가입을 위한 추가정보를 \n입력해주세요! :)</string>
     <string name="sign_up_name">이름</string>
