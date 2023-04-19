@@ -15,7 +15,6 @@ import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.sopar.data.remote.response.LoginResponse
 import org.sopar.domain.entity.NetworkState
 import org.sopar.domain.repository.AuthRepository
 import javax.inject.Inject
@@ -24,12 +23,12 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ): ViewModel() {
-    private val _userInfo = MutableLiveData<LoginResponse>()
-    val userInfo: LiveData<LoginResponse> get() = _userInfo
 
     //로그인 state
     private val _loginState = MutableLiveData(NetworkState.LOADING)
     val loginState: LiveData<NetworkState> get() = _loginState
+    private val _newUserLoginState = MutableLiveData(NetworkState.LOADING)
+    val newUserLoginState: LiveData<NetworkState> get() = _newUserLoginState
 
 
     private val callback: (OAuthToken?, Throwable?) -> Unit = { oAuthToken, throwable ->
@@ -72,12 +71,11 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    suspend fun checkNewUser(accessToken: String) {
+    private suspend fun checkNewUser(accessToken: String) {
 
         val response = authRepository.login(accessToken)
 
         if (response.isSuccessful) {
-            _userInfo.postValue(response.body())
             response.body()?.jwt?.let {
                 authRepository.saveJwt(it)
             }
@@ -85,13 +83,19 @@ class LoginViewModel @Inject constructor(
             response.body()?.userId?.let {
                 authRepository.saveUId(it)
             }
-            _loginState.postValue(NetworkState.SUCCESS)
+            response.body()?.newUser?.let {
+                if (it) {
+                    _newUserLoginState.postValue(NetworkState.SUCCESS)
+                } else {
+                    _loginState.postValue(NetworkState.SUCCESS)
+                }
+            }
         } else {
             _loginState.postValue(NetworkState.FAIL)
         }
     }
 
-    suspend fun checkToken() {
+    fun checkToken() {
         if (AuthApiClient.instance.hasToken()) {
             UserApiClient.instance.accessTokenInfo { _, error ->
                 if (error != null) {
