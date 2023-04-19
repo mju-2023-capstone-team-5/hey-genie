@@ -14,5 +14,8 @@ interface AuthRepository {
     suspend fun saveUId(id: Int)
     suspend fun getUId(): Flow<Int>
 
+    suspend fun saveAccessToken(accessToken: String)
+    suspend fun getAccessToken(): Flow<String>
+
     suspend fun userRegister(userRegisterRequest: UserRegisterRequest): Response<String>
 }
