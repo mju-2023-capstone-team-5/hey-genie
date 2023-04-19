@@ -14,6 +14,7 @@ import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.sopar.domain.entity.NetworkState
 import org.sopar.domain.repository.AuthRepository
@@ -76,6 +77,8 @@ class LoginViewModel @Inject constructor(
         val response = authRepository.login(accessToken)
 
         if (response.isSuccessful) {
+            authRepository.saveAccessToken(accessToken)
+
             response.body()?.jwt?.let {
                 authRepository.saveJwt(it)
             }
@@ -103,7 +106,9 @@ class LoginViewModel @Inject constructor(
                         _loginState.postValue(NetworkState.FAIL)
                     }
                 } else {
-                    _loginState.postValue(NetworkState.SUCCESS)
+                    viewModelScope.launch {
+                        checkNewUser(authRepository.getAccessToken().first())
+                    }
                 }
             }
         }
