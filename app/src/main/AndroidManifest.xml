@@ -25,7 +25,9 @@
                     android:scheme="kakao${NATIVE_APP_KEY}" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.signUp.SignUpActivity"/>
+        <activity
+            android:name=".presentation.signUp.SignUpActivity"
+            android:theme="@style/Theme.Sopar"/>
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true">
@@ -36,6 +38,7 @@
         </activity>
         <activity
             android:name=".presentation.main.MainActivity"
+            android:theme="@style/Theme.Sopar"
             android:exported="true">
         </activity>
     </application>
