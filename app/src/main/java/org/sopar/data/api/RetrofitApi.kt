@@ -1,6 +1,7 @@
 package org.sopar.data.api
 
 import org.sopar.data.remote.request.LoginRequest
+import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -12,5 +13,10 @@ interface RetrofitApi {
     suspend fun login(
         @Body loginRequest: LoginRequest
     ): Response<LoginResponse>
+
+    @POST("/api/v1/register")
+    suspend fun userRegister(
+        @Body userRegisterRequest: UserRegisterRequest
+    ): Response<String>
 
 }
