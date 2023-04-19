@@ -1,6 +1,7 @@
 package org.sopar.domain.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
 import retrofit2.Response
 
@@ -13,4 +14,5 @@ interface AuthRepository {
     suspend fun saveUId(id: Int)
     suspend fun getUId(): Flow<Int>
 
+    suspend fun userRegister(userRegisterRequest: UserRegisterRequest): Response<String>
 }

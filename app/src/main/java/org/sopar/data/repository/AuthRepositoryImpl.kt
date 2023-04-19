@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import org.sopar.data.api.RetrofitApi
 import org.sopar.data.remote.request.LoginRequest
+import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
 import org.sopar.data.repository.AuthRepositoryImpl.PreferencesKeys.JWT_KEY
 import org.sopar.data.repository.AuthRepositoryImpl.PreferencesKeys.UID_Key
@@ -66,14 +67,15 @@ class AuthRepositoryImpl @Inject constructor(
             }
     }
 
+    override suspend fun userRegister(userRegisterRequest: UserRegisterRequest): Response<String> {
+        return api.userRegister(userRegisterRequest)
+    }
+
     private object PreferencesKeys {
         // jwt
         val JWT_KEY: Preferences.Key<String> = stringPreferencesKey("jwt_key")
         // uid
         val UID_Key: Preferences.Key<Int> = intPreferencesKey("uid_key")
     }
-
-
-
 
 }
