@@ -1,11 +1,18 @@
 package org.sopar.di
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import org.sopar.data.api.RetrofitApi
+import org.sopar.util.Constants.DATASTORE_NAME
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -36,4 +43,12 @@ object AppModule {
     fun provideApiService(retrofit: Retrofit): RetrofitApi {
         return retrofit.create(RetrofitApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> = (
+            PreferenceDataStoreFactory.create(
+                produceFile = { context.preferencesDataStoreFile(DATASTORE_NAME)}
+            )
+            )
 }

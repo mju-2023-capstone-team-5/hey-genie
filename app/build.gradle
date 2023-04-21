@@ -83,5 +83,8 @@ dependencies {
 
     //Okhttp
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+
+    //dataStore
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
     
 }
