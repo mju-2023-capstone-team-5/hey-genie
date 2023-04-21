@@ -3,9 +3,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/fragment_home"
-            android:icon="@drawable/ic_nav_home"
-            android:title="Home"/>
+            android:id="@+id/fragment_map"
+            android:icon="@drawable/ic_nav_map"
+            android:title="Map"/>
         <item
             android:id="@+id/fragment_my_page"
             android:icon="@drawable/ic_nav_my_page"
@@ -15,4 +15,5 @@
             android:icon="@drawable/ic_nav_setting"
             android:title="Setting"/>
     </group>
+
 </menu>
