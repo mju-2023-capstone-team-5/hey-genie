@@ -23,8 +23,12 @@
     //dialog
     <string name="base_ok">확인</string>
     <string name="base_error">오류가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+
+    //description
+    <string name="btn_for_log_out">button_for_log_out</string>
     <string name="sign_up_error">기본 정보를 채워주세요!🥲</string>
 
     //Toast
     <string name="toast_sign_up_complete">회원가입에 성공하셨습니다!🙂</string>
+
 </resources>
