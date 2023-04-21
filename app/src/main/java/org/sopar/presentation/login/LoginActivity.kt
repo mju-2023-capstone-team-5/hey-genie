@@ -18,6 +18,7 @@ import org.sopar.R
 import org.sopar.databinding.ActivityLoginBinding
 import org.sopar.domain.entity.NetworkState
 import org.sopar.presentation.base.BaseErrorDialog
+import org.sopar.presentation.entry.EntryActivity
 import org.sopar.presentation.main.MainActivity
 import org.sopar.presentation.signUp.SignUpActivity
 
@@ -71,7 +72,7 @@ class LoginActivity: AppCompatActivity() {
             }
             if (state == NetworkState.SUCCESS) {
 
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, EntryActivity::class.java)
                 startActivity(intent)
             }
         }
