@@ -1,5 +1,6 @@
 package org.sopar.presentation.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.GravityCompat
@@ -11,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import org.sopar.R
 import org.sopar.databinding.ActivityMainBinding
+import org.sopar.presentation.entry.EntryActivity
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.toolbar))
         setJetpackNavigation()
+        init()
 
     }
 
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         navController = host.navController
 
         appBar = AppBarConfiguration(
-            setOf(R.id.fragment_home, R.id.fragment_my_page, R.id.fragment_setting),
+            setOf(R.id.fragment_map, R.id.fragment_my_page, R.id.fragment_setting),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBar)
@@ -53,4 +56,13 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
+    private fun init() {
+        binding.navView.menu.findItem(R.id.btn_home).setOnMenuItemClickListener {
+            val intent = Intent(this, EntryActivity::class.java)
+            startActivity(intent)
+            true
+        }
+    }
+
 }

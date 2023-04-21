@@ -5,16 +5,4 @@
     android:background="@color/base_blue"
     android:layout_height="200dp">
 
-    <ImageView
-        android:id="@+id/btn_logout"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:padding="10dp"
-        android:clickable="true"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_logout"
-        android:contentDescription="@string/btn_for_log_out"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
