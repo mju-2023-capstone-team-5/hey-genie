@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import net.daum.mf.map.api.MapView
 import org.sopar.R
 import org.sopar.databinding.FragmentMapBinding
@@ -20,6 +21,19 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         super.onCreate(savedInstanceState)
         if (!isAllPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setSearchFocusListener()
+    }
+
+    private fun setSearchFocusListener() {
+        binding.textMapSearch.setOnFocusChangeListener { _, hasFocus ->
+            if(hasFocus) {
+                findNavController().navigate(R.id.action_fragment_map_to_searchFragment)
+            }
         }
     }
 
