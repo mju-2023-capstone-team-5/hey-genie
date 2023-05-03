@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.ListAdapter
 
-class GenericListAdapter<T: Any>(
+open class GenericListAdapter<T: Any>(
     @IdRes val layoutResId: Int,
     inline val bind: (item: T, holder: BaseViewHolder, itemCount: Int) -> Unit
 ): ListAdapter<T, BaseViewHolder>(BaseDiffCallback<T>()) {
