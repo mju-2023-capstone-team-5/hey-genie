@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import net.daum.mf.map.api.MapView
 import org.sopar.R
 import org.sopar.databinding.FragmentMapBinding
@@ -17,6 +18,8 @@ import org.sopar.presentation.base.BaseFragment
 
 
 class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
+    private val args: MapFragmentArgs by navArgs<MapFragmentArgs>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!isAllPermissionsGranted()) {
@@ -27,6 +30,13 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setSearchFocusListener()
+
+        val place = args.place
+        place?.let {
+            //검색 결과가 있을 경우, 해당 위치로 지도 셋팅
+
+            //검색 결과가 없을 경우, 현재 위치로 지도 셋팅
+        }
     }
 
     private fun setSearchFocusListener() {
