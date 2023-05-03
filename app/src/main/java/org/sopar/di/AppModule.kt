@@ -11,11 +11,21 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import org.sopar.data.api.RetrofitApi
+import org.sopar.data.api.KakaoRetrofitApi
+import org.sopar.data.api.SoparRetrofitApi
 import org.sopar.util.Constants.DATASTORE_NAME
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class SoparRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class KakaoRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -30,6 +40,7 @@ object AppModule {
 
     @Singleton
     @Provides
+    @SoparRetrofit
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
@@ -40,6 +51,7 @@ object AppModule {
 
     @Singleton
     @Provides
+    @KakaoRetrofit
     fun provideKakaoRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
@@ -50,8 +62,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): RetrofitApi {
-        return retrofit.create(RetrofitApi::class.java)
+    fun provideApiService(@SoparRetrofit soparRetrofit: Retrofit): SoparRetrofitApi {
+        return soparRetrofit.create(SoparRetrofitApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideKakaoApiService(@KakaoRetrofit kakaoRetrofit: Retrofit): KakaoRetrofitApi {
+        return kakaoRetrofit.create(KakaoRetrofitApi::class.java)
     }
 
     @Singleton

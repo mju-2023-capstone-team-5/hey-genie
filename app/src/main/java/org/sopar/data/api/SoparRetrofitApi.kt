@@ -11,7 +11,7 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface RetrofitApi {
+interface SoparRetrofitApi {
 
     @POST("/api/v1/login/token")
     suspend fun login(
@@ -22,11 +22,5 @@ interface RetrofitApi {
     suspend fun userRegister(
         @Body userRegisterRequest: UserRegisterRequest
     ): Response<String>
-
-    @GET("v2/local/search/keyword.json")
-    suspend fun getSearchLocation(
-        @Header("Authorization") token: String,
-        @Query("query") query: String
-    ): Response<SearchResponse>
 
 }
