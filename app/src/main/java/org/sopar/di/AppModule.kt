@@ -40,6 +40,16 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideKakaoRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(okHttpClient)
+            .baseUrl("https://dapi.kakao.com/")
+            .build()
+    }
+
+    @Singleton
+    @Provides
     fun provideApiService(retrofit: Retrofit): RetrofitApi {
         return retrofit.create(RetrofitApi::class.java)
     }
