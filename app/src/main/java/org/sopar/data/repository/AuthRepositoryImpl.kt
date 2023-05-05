@@ -5,7 +5,7 @@ import androidx.datastore.preferences.core.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import org.sopar.data.api.RetrofitApi
+import org.sopar.data.api.SoparRetrofitApi
 import org.sopar.data.remote.request.LoginRequest
 import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
@@ -20,7 +20,7 @@ import javax.inject.Singleton
 
 @Singleton
 class AuthRepositoryImpl @Inject constructor(
-    private val api: RetrofitApi,
+    private val api: SoparRetrofitApi,
     private val dataStore: DataStore<Preferences>
 ) : AuthRepository {
     override suspend fun login(accessToken: String): Response<LoginResponse> {

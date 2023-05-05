@@ -45,7 +45,7 @@ class SignUpActivity: AppCompatActivity() {
             val phone = binding.edtTextSignUpPhoneNumber.text.toString()
             val carNumber = binding.edtTextSignUpCarNumber.text.toString()
 
-            if (name.isBlank() || address.isNullOrBlank() || phone.isNullOrBlank() || carNumber.isNullOrBlank()) {
+            if (name.isBlank() || address.isBlank() || phone.isBlank() || carNumber.isBlank()) {
                 val dialog = BaseErrorDialog(R.string.sign_up_error)
                 dialog.show(supportFragmentManager, "BaseErrorDialog")
             } else {
@@ -60,7 +60,7 @@ class SignUpActivity: AppCompatActivity() {
     private fun setObserver() {
         signUpViewModel.registerState.observe(this) { state ->
             if (state == NetworkState.SUCCESS) {
-                Toast.makeText(this, resources.getText(R.string.app_name), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "회원가입에 성공하셨습니다!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             } else if (state == NetworkState.FAIL) {

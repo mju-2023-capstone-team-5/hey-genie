@@ -6,11 +6,13 @@
     <string name="sign_up_phone_number_hint">전화번호를 입력해주세요</string>
     <string name="sign_up_address_hint">주소를 입력해주세요</string>
     <string name="sign_up_car_number_hint">차량번호를 입력해주세요</string>
+    <string name="map_search_hint">검색어를 입력해주세요</string>
 
     //navigation
     <string name="fragment_map">Map</string>
     <string name="fragment_my_page">My Page</string>
     <string name="fragment_setting">Settings</string>
+    <string name="fragment_search">Map</string>
 
     //signUp
     <string name="sign_up_info">회원가입을 위한 추가정보를 \n입력해주세요! :)</string>
@@ -34,8 +36,11 @@
     //description
     <string name="btn_for_log_out">button_for_log_out</string>
     <string name="btn_entry_screen">button_for_entry_screen</string>
+    <string name="btn_map_fragment">button_for_map_fragment</string>
 
     //Toast
     <string name="toast_sign_up_complete">회원가입에 성공하셨습니다!🙂</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

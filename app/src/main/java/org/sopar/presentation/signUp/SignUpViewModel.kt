@@ -1,7 +1,5 @@
 package org.sopar.presentation.signUp
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,8 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.sopar.data.api.RetrofitApi
+import org.sopar.data.api.SoparRetrofitApi
 import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.domain.entity.NetworkState
 import org.sopar.domain.repository.AuthRepository
@@ -20,7 +17,7 @@ import java.lang.Exception
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
-    private val api: RetrofitApi,
+    private val api: SoparRetrofitApi,
     private val authRepository: AuthRepository
 ): ViewModel() {
     private val _registerState = MutableLiveData(NetworkState.LOADING)
@@ -30,6 +27,7 @@ class SignUpViewModel @Inject constructor(
     fun userRegister(userRegisterRequest: UserRegisterRequest) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                authRepository.userRegister(userRegisterRequest)
                 _registerState.postValue(NetworkState.SUCCESS)
             } catch(e: Exception) {
                 _registerState.postValue(NetworkState.FAIL)

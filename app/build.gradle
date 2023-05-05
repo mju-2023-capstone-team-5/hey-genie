@@ -86,5 +86,7 @@ dependencies {
 
     //dataStore
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
-    
+
+    //kakao map
+    implementation files('libs/libDaumMapAndroid.jar')
 }

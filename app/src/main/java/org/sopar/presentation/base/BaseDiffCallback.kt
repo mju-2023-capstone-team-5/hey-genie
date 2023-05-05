@@ -3,7 +3,7 @@ package org.sopar.presentation.base
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseDiffCallback<T: Any>: DiffUtil.ItemCallback<T>() {
+open class BaseDiffCallback<T: Any>: DiffUtil.ItemCallback<T>() {
     override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
         return oldItem.toString() == newItem.toString()
     }

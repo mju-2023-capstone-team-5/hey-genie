@@ -11,4 +11,5 @@
     <!--   base   -->
     <color name="base_blue">#3B97D3</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="base_gray">#595959</color>
 </resources>

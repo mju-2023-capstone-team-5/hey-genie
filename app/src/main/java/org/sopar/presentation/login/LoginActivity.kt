@@ -3,9 +3,9 @@ package org.sopar.presentation.login
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AnticipateInterpolator
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
@@ -71,7 +71,7 @@ class LoginActivity: AppCompatActivity() {
                 dialog.show(supportFragmentManager, "BaseErrorDialog")
             }
             if (state == NetworkState.SUCCESS) {
-
+                Toast.makeText(this, "로그인에 성공하셨습니다!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, EntryActivity::class.java)
                 startActivity(intent)
             }
