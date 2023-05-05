@@ -89,4 +89,8 @@ dependencies {
 
     //kakao map
     implementation files('libs/libDaumMapAndroid.jar')
+
+    //bottom sheet
+    implementation 'com.google.android.material:material:1.9.0'
+
 }
