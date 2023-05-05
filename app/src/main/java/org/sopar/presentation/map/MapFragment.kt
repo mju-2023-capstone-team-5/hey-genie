@@ -3,6 +3,7 @@ package org.sopar.presentation.map
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import org.sopar.R
+import org.sopar.data.remote.response.Place
 import org.sopar.databinding.FragmentMapBinding
 import org.sopar.presentation.base.BaseFragment
 
@@ -34,10 +38,32 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         val place = args.place
         place?.let {
             //검색 결과가 있을 경우, 해당 위치로 지도 셋팅
-
-            //검색 결과가 없을 경우, 현재 위치로 지도 셋팅
+            setSearchResult(place)
         }
     }
+
+    private fun setSearchResult(place: Place) {
+        binding.textMapSearch.setText(place.place_name)
+
+        val marker = MapPOIItem()
+        val y = place.y.toDouble()
+        val x = place.x.toDouble()
+        val point = MapPoint.mapPointWithGeoCoord(y, x)
+        marker.apply {
+            itemName = place.place_name
+            tag = 0
+            mapPoint = point
+            markerType = MapPOIItem.MarkerType.BluePin
+            selectedMarkerType = MapPOIItem.MarkerType.RedPin
+        }
+
+        binding.mapView.apply {
+            setMapCenterPoint(MapPoint.mapPointWithGeoCoord(place.y.toDouble(), place.x.toDouble()), true)
+            addPOIItem(marker)
+        }
+
+    }
+
 
     private fun setSearchFocusListener() {
         binding.textMapSearch.setOnFocusChangeListener { _, hasFocus ->
