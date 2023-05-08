@@ -55,7 +55,7 @@
     <string name="reservation_parking_lot_address">주차장 주소</string>
     <string name="reservation_date">이용 날짜</string>
     <string name="reservation_min_cost">최소 요금</string>
-    <string name="reservation_monthly_surcharge">추가 요금(일)</string>
+    <string name="reservation_monthly_surcharge">추가 요금(월)</string>
     <string name="reservation_hourly_surcharge">추가 요금(시간)</string>
     <string name="reservation_month_duration">대여 기간(월)</string>
     <string name="reservation_start_time">대여 시작 시간</string>
