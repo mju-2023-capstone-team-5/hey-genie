@@ -59,8 +59,9 @@
     <string name="reservation_hourly_surcharge">추가 요금(시간)</string>
     <string name="reservation_month_duration">대여 기간(월)</string>
     <string name="reservation_start_time">대여 시작 시간</string>
-    <string name="reservation_time_duration">대여 시간 선택(h)</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reservation_time_duration">대여 시간(h)</string>
+
+    //pay
+    <string name="payment_info">예약 정보를 확인해주세요!:)</string>
 
 </resources>
