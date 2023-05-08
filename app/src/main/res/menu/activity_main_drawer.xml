@@ -7,15 +7,15 @@
         <item
             android:id="@+id/fragment_map"
             android:icon="@drawable/ic_nav_map"
-            android:title="Map"/>
+            android:title="지도"/>
         <item
             android:id="@+id/fragment_my_page"
             android:icon="@drawable/ic_nav_my_page"
-            android:title="My Page"/>
+            android:title="마이 페이지"/>
         <item
             android:id="@+id/fragment_setting"
             android:icon="@drawable/ic_nav_setting"
-            android:title="Setting"/>
+            android:title="설정"/>
     </group>
 
     <group
@@ -24,11 +24,11 @@
         <item
             android:id="@+id/btn_home"
             android:icon="@drawable/ic_nav_home"
-            android:title="Home"/>
+            android:title="메인"/>
         <item
             android:id="@+id/btn_logout"
             android:icon="@drawable/ic_nav_logout"
-            android:title="LogOut"/>
+            android:title="로그아웃"/>
     </group>
 
 

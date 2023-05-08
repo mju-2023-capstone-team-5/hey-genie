@@ -62,7 +62,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         }
 
         val temp = listOf(
-            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 3000, 1000),
             ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
             ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
             ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0)

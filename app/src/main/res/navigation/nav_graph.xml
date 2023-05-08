@@ -64,5 +64,24 @@
         <argument
             android:name="isHourly"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_reservationFragment_to_payFragment"
+            app:destination="@id/payFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="org.sopar.presentation.pay.PayFragment"
+        android:label="@string/fragment_pay"
+        tools:layout="@layout/fragment_pay" >
+        <argument
+            android:name="reservation"
+            app:argType="org.sopar.data.remote.request.Reservation" />
+        <argument
+            android:name="parkingLot"
+            app:argType="org.sopar.data.remote.response.ParkingLot" />
     </fragment>
 </navigation>
