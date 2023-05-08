@@ -45,10 +45,10 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     private fun setupRecyclerView() {
         parkingLotAdapter = ParkingLotAdapter()
 
-//        parkingLotAdapter.setOnItemClickListener { parkingLot ->
-//            val action = SearchFragmentDirections.actionSearchFragmentToFragmentMap(place)
-//            findNavController().navigate(action)
-//        }
+        parkingLotAdapter.setOnItemClickListener { parkingLot ->
+            val action = MapFragmentDirections.actionFragmentMapToReservationFragment2(parkingLot)
+            findNavController().navigate(action)
+        }
 
         binding.listParkingLot.apply {
             //정해진 사이즈가 있으니 새로운 요소를 추가할 때 recyclerview의 크기를 재측정 하지 않아도 된다.
@@ -59,10 +59,10 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         }
 
         val temp = listOf(
-            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9),
-            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9),
-            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9),
-            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9)
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0)
         )
         parkingLotAdapter.submitList(temp)
     }
