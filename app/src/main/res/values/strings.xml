@@ -40,6 +40,7 @@
     <string name="btn_entry_screen">button_for_entry_screen</string>
     <string name="btn_map_fragment">button_for_map_fragment</string>
     <string name="icon_bottom_sheet">icon_for_bottom_sheet</string>
+    <string name="image_parking_lot">parking_lot_image</string>
 
     //Toast
     <string name="toast_sign_up_complete">회원가입에 성공하셨습니다!🙂</string>

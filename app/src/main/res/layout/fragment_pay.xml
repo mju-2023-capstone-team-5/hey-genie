@@ -44,10 +44,19 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
 
+                <ImageView
+                    android:id="@+id/image_parking_lot"
+                    android:contentDescription="@string/image_parking_lot"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_horizontal"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/reservation_parking_lot_name"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
