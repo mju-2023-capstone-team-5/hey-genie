@@ -8,7 +8,7 @@ import org.sopar.data.remote.response.Place
 import org.sopar.databinding.ItemLocationBinding
 import org.sopar.presentation.base.BaseDiffCallback
 
-open class LocationSearchAdapter: ListAdapter<Place, LocationSearchViewHolder>(BaseDiffCallback<Place>()) {
+class LocationSearchAdapter: ListAdapter<Place, LocationSearchViewHolder>(BaseDiffCallback<Place>()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationSearchViewHolder {
         return LocationSearchViewHolder(ItemLocationBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
