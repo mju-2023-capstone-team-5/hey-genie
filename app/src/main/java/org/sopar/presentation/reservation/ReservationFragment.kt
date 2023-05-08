@@ -16,7 +16,14 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         super.onViewCreated(view, savedInstanceState)
         setUp()
         setNumberPicker()
+        setCompleteBtnListener()
 
+    }
+
+    private fun setCompleteBtnListener() {
+        binding.btnReservationComplete.setOnClickListener {
+            
+        }
     }
 
     private fun setNumberPicker() {
@@ -37,6 +44,17 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         val parkingLot = args.parkingLot
         binding.textParkingLotName.text = parkingLot.name
         binding.textParkingLotAddress.text = parkingLot.address
+        binding.textMinCost.text = parkingLot.minimum.toString()
+        //월/시간 단위 분리 해야 함
+        binding.textSurcharge.text = parkingLot.surcharge.toString()
+
+        if (args.isHourly) {
+            binding.layoutHourly.visibility = View.VISIBLE
+            binding.textHourlySurcharge.visibility = View.VISIBLE
+        } else {
+            binding.layoutMonthly.visibility = View.VISIBLE
+            binding.textMonthlySurcharge.visibility = View.VISIBLE
+        }
     }
 
     override fun getFragmentBinding(

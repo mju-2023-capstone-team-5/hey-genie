@@ -22,12 +22,15 @@ import org.sopar.presentation.base.BaseFragment
 class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     private val args: MapFragmentArgs by navArgs()
     private lateinit var parkingLotAdapter: ParkingLotAdapter
+    private var isHourly: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!isAllPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
         }
+
+        isHourly = requireActivity().intent.extras?.getBoolean("isHourly")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +49,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         parkingLotAdapter = ParkingLotAdapter()
 
         parkingLotAdapter.setOnItemClickListener { parkingLot ->
-            val action = MapFragmentDirections.actionFragmentMapToReservationFragment2(parkingLot)
+            val action = MapFragmentDirections.actionFragmentMapToReservationFragment2(parkingLot, isHourly!!)
             findNavController().navigate(action)
         }
 

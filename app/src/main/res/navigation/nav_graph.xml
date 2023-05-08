@@ -61,5 +61,8 @@
         <argument
             android:name="parkingLot"
             app:argType="org.sopar.data.remote.response.ParkingLot" />
+        <argument
+            android:name="isHourly"
+            app:argType="boolean" />
     </fragment>
 </navigation>
