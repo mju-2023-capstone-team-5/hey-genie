@@ -65,4 +65,9 @@
             android:name="isHourly"
             app:argType="boolean" />
     </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="org.sopar.presentation.pay.PayFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_pay" />
 </navigation>
