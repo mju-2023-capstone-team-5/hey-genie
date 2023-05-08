@@ -13,6 +13,7 @@
     <string name="fragment_my_page">My Page</string>
     <string name="fragment_setting">Settings</string>
     <string name="fragment_search">Map</string>
+    <string name="fragment_reservation">Reservation</string>
 
     //signUp
     <string name="sign_up_info">회원가입을 위한 추가정보를 \n입력해주세요! :)</string>
@@ -37,10 +38,26 @@
     <string name="btn_for_log_out">button_for_log_out</string>
     <string name="btn_entry_screen">button_for_entry_screen</string>
     <string name="btn_map_fragment">button_for_map_fragment</string>
+    <string name="icon_bottom_sheet">icon_for_bottom_sheet</string>
 
     //Toast
     <string name="toast_sign_up_complete">회원가입에 성공하셨습니다!🙂</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //map
+    <string name="map_parking_lot_list">주차장 정보</string>
+
+    //reservation
+    <string name="reservation_btn_complete">예약하기</string>
+    <string name="reservation_info">예약 정보</string>
+    <string name="reservation_parking_lot_info">주차장 정보</string>
+    <string name="reservation_parking_lot_name">주차장 이름</string>
+    <string name="reservation_parking_lot_address">주차장 주소</string>
+    <string name="reservation_date">이용 날짜</string>
+    <string name="reservation_min_cost">최소 요금</string>
+    <string name="reservation_monthly_surcharge">추가 요금(일)</string>
+    <string name="reservation_hourly_surcharge">추가 요금(시간)</string>
+    <string name="reservation_month_duration">대여 기간(월)</string>
+    <string name="reservation_start_time">대여 시작 시간</string>
+    <string name="reservation_time_duration">대여 시간 선택(h)</string>
 
 </resources>

@@ -1,9 +1,7 @@
 package org.sopar.presentation.map
 
 import android.content.pm.PackageManager
-import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,34 +10,64 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapView
 import org.sopar.R
+import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.Place
 import org.sopar.databinding.FragmentMapBinding
 import org.sopar.presentation.base.BaseFragment
 
-
 class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
-    private val args: MapFragmentArgs by navArgs<MapFragmentArgs>()
+    private val args: MapFragmentArgs by navArgs()
+    private lateinit var parkingLotAdapter: ParkingLotAdapter
+    private var isHourly: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!isAllPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
         }
+
+        isHourly = requireActivity().intent.extras?.getBoolean("isHourly")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setSearchFocusListener()
+        setupRecyclerView()
 
         val place = args.place
         place?.let {
             //검색 결과가 있을 경우, 해당 위치로 지도 셋팅
             setSearchResult(place)
         }
+    }
+
+    private fun setupRecyclerView() {
+        parkingLotAdapter = ParkingLotAdapter()
+
+        parkingLotAdapter.setOnItemClickListener { parkingLot ->
+            val action = MapFragmentDirections.actionFragmentMapToReservationFragment2(parkingLot, isHourly!!)
+            findNavController().navigate(action)
+        }
+
+        binding.listParkingLot.apply {
+            //정해진 사이즈가 있으니 새로운 요소를 추가할 때 recyclerview의 크기를 재측정 하지 않아도 된다.
+            setHasFixedSize(true)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = parkingLotAdapter
+        }
+
+        val temp = listOf(
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0),
+            ParkingLot("dfdf", null, 0.0, 1.0, "dfdf", 9, 9, 0, 0)
+        )
+        parkingLotAdapter.submitList(temp)
     }
 
     private fun setSearchResult(place: Place) {

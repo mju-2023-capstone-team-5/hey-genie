@@ -12,4 +12,5 @@
     <color name="base_blue">#3B97D3</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="base_gray">#595959</color>
+    <color name="base_light_gray">#E4E4E4</color>
 </resources>
