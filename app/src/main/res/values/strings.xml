@@ -48,7 +48,7 @@
     <string name="map_parking_lot_list">주차장 정보</string>
 
     //reservation
-    <string name="reservation_btn_complete">예약하기</string>
+    <string name="reservation_btn_complete">0원 결제하기</string>
     <string name="reservation_info">예약 정보</string>
     <string name="reservation_parking_lot_info">주차장 정보</string>
     <string name="reservation_parking_lot_name">주차장 이름</string>
