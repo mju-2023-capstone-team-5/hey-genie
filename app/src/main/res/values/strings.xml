@@ -65,4 +65,7 @@
     //pay
     <string name="payment_info">예약 정보를 확인해주세요!:)</string>
 
+    //notice
+    <string name="no_notice">공지사항이 없습니다!:)</string>
+
 </resources>
