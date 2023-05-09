@@ -100,6 +100,6 @@
     <string name="register_text_surcharge">추가 요금</string>
     <string name="register_text_contact_info">연락처</string>
     <string name="register_text_caution">주의사항</string>
-
+    <string name="register_btn_next">다음 단계</string>
 
 </resources>
