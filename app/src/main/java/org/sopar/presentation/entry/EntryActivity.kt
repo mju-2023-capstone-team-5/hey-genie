@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.sopar.databinding.ActivityEntryBinding
 import org.sopar.presentation.main.MainActivity
+import org.sopar.presentation.notice.NoticeActivity
 
 class EntryActivity: AppCompatActivity() {
     private val binding: ActivityEntryBinding by lazy {
@@ -35,7 +36,8 @@ class EntryActivity: AppCompatActivity() {
         }
 
         binding.btnNotice.setOnClickListener {
-            //공지사항 화면 구성
+            val intent = Intent(this, NoticeActivity::class.java)
+            startActivity(intent)
         }
     }
 }
