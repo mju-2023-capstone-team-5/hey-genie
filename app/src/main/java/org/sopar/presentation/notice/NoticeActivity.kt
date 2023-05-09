@@ -31,7 +31,8 @@ class NoticeActivity : AppCompatActivity() {
         noticeAdapter = NoticeAdapter()
 
         noticeAdapter.setOnItemClickListener { notice ->
-            //다이얼로그로 공지 보여주기
+            val dialog = NoticeDialog(notice)
+            dialog.show(supportFragmentManager, "NoticeDialog")
         }
 
         binding.listNotice.apply {
