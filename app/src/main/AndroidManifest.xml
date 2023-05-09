@@ -46,6 +46,8 @@
         </activity>
         <activity android:name=".presentation.entry.EntryActivity"
             android:theme="@style/Theme.Sopar"/>
+        <activity android:name=".presentation.notice.NoticeActivity"
+            android:theme="@style/Theme.Sopar"/>
 
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="${NATIVE_APP_KEY}"/>
 
