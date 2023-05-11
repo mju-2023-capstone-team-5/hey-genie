@@ -3,6 +3,7 @@ package org.sopar.data.api
 import org.sopar.data.remote.request.LoginRequest
 import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
+import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.SearchResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -23,4 +24,11 @@ interface SoparRetrofitApi {
         @Body userRegisterRequest: UserRegisterRequest
     ): Response<String>
 
+    @GET("/api/v1/parking-lots/rectangle")
+    suspend fun getParkingLots(
+      @Query("x1") x1: Double,
+      @Query("y1") y1: Double,
+      @Query("x2") x2: Double,
+      @Query("y2") y2: Double
+    ): Response<List<ParkingLot>>
 }
