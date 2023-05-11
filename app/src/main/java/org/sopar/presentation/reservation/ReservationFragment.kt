@@ -30,12 +30,12 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
     
     private fun setDurationPickerListener() {
         binding.monthlyDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            price = args.parkingLot.surcharge * newVal
+            price = args.parkingLot.surcharge ?: 0 * newVal
             binding.btnReservationComplete.text = "${price}원 결제하기"
         }
 
         binding.timeDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            price = args.parkingLot.surcharge * newVal
+            price = args.parkingLot.surcharge ?: 0 * newVal
             binding.btnReservationComplete.text = "${price}원 결제하기"
         }
     }
@@ -57,7 +57,7 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val hourlyReservationInfo = HourlyReservationInfo(date, startHour, startMinute, duration)
 
-                price = parkingLot.surcharge * duration
+                price = parkingLot.surcharge ?: 0 * duration
                 reservation = Reservation(0, 0, 0, null, hourlyReservationInfo, price)
             } else {
                 val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
@@ -68,11 +68,11 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val monthlyReservationInfo = MonthlyReservationInfo(date, duration)
 
-                price = parkingLot.surcharge * duration
+                price = parkingLot.surcharge ?: 0 * duration
                 reservation = Reservation(0, 0 ,0, monthlyReservationInfo, null, price)
             }
 
-            if (price >= parkingLot.minimum) {
+            if (price >= parkingLot.minimum ?: 0) {
                 val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(reservation, parkingLot)
                 findNavController().navigate(action)
             } else {

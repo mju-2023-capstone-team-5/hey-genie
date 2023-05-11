@@ -2,9 +2,11 @@ package org.sopar.data.remote.response
 
 import android.os.Parcelable
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@JsonClass(generateAdapter = true)
 data class ParkingLot(
     @field:Json(name = "address")
     val address: String,
@@ -21,7 +23,7 @@ data class ParkingLot(
     @field:Json(name = "remainingSpace")
     val remainingSpace: Int?,
     @field:Json(name = "minimum")
-    val minimum: Int,
+    val minimum: Int?,
     @field:Json(name = "surcharge")
-    val surcharge: Int
+    val surcharge: Int?
 ): Parcelable
