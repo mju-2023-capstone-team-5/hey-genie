@@ -30,12 +30,23 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
     
     private fun setDurationPickerListener() {
         binding.monthlyDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            price = args.parkingLot.surcharge ?: 0 * newVal
+            val price: Int
+            price = if (args.isHourly) {
+                args.parkingLot.hourly!!.surcharge * newVal
+            } else {
+                args.parkingLot.monthly!!.surcharge * newVal
+            }
+
             binding.btnReservationComplete.text = "${price}원 결제하기"
         }
 
         binding.timeDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            price = args.parkingLot.surcharge ?: 0 * newVal
+            val price: Int
+            price = if (args.isHourly) {
+                args.parkingLot.hourly!!.surcharge * newVal
+            } else {
+                args.parkingLot.monthly!!.surcharge * newVal
+            }
             binding.btnReservationComplete.text = "${price}원 결제하기"
         }
     }
@@ -45,6 +56,7 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         binding.btnReservationComplete.setOnClickListener {
             val price: Int
             val reservation: Reservation
+            val minimum: Int
 
             if (args.isHourly) {
                 val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
@@ -57,7 +69,8 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val hourlyReservationInfo = HourlyReservationInfo(date, startHour, startMinute, duration)
 
-                price = parkingLot.surcharge ?: 0 * duration
+                minimum = parkingLot.hourly!!.minimum
+                price = parkingLot.hourly!!.surcharge * duration
                 reservation = Reservation(0, 0, 0, null, hourlyReservationInfo, price)
             } else {
                 val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
@@ -68,11 +81,12 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val monthlyReservationInfo = MonthlyReservationInfo(date, duration)
 
-                price = parkingLot.surcharge ?: 0 * duration
+                minimum = parkingLot.monthly!!.minimum
+                price = parkingLot.monthly!!.surcharge * duration
                 reservation = Reservation(0, 0 ,0, monthlyReservationInfo, null, price)
             }
 
-            if (price >= parkingLot.minimum ?: 0) {
+            if (price >= minimum) {
                 val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(reservation, parkingLot)
                 findNavController().navigate(action)
             } else {
@@ -101,14 +115,15 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         val parkingLot = args.parkingLot
         binding.textParkingLotName.text = parkingLot.name
         binding.textParkingLotAddress.text = parkingLot.address
-        binding.textMinCost.text = parkingLot.minimum.toString()
-        //월/시간 단위 분리 해야 함
-        binding.textSurcharge.text = parkingLot.surcharge.toString()
 
         if (args.isHourly) {
+            binding.textMinCost.text = parkingLot.hourly!!.minimum.toString()
+            binding.textSurcharge.text = parkingLot.hourly!!.surcharge.toString()
             binding.layoutHourly.visibility = View.VISIBLE
             binding.textHourlySurcharge.visibility = View.VISIBLE
         } else {
+            binding.textMinCost.text = parkingLot.monthly!!.minimum.toString()
+            binding.textSurcharge.text = parkingLot.monthly!!.surcharge.toString()
             binding.layoutMonthly.visibility = View.VISIBLE
             binding.textMonthlySurcharge.visibility = View.VISIBLE
         }
