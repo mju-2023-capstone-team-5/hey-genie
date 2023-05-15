@@ -60,7 +60,8 @@
         tools:layout="@layout/fragment_reservation" >
         <argument
             android:name="parkingLot"
-            app:argType="org.sopar.data.remote.response.ParkingLot" />
+            app:argType="org.sopar.data.remote.response.ParkingLot"
+            app:nullable="true" />
         <argument
             android:name="isHourly"
             app:argType="boolean" />
@@ -71,6 +72,10 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="parkingLotId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/payFragment"
