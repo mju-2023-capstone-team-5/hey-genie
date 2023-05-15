@@ -127,9 +127,10 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
 
         mapViewModel.parkingLots.observe(viewLifecycleOwner) { parkingLots ->
             if (parkingLots.isNotEmpty()) {
-                Log.d("adapter submit", parkingLots.toString())
-                parkingLotAdapter.submitList(parkingLots)
-                for (item in parkingLots) {
+                val temp = getCategoryList(parkingLots)
+                Log.d("adapter submit", temp.toString())
+                parkingLotAdapter.submitList(temp)
+                for (item in temp) {
                     setCustomPicker(item)
                 }
 
@@ -147,6 +148,21 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
                 getBound()
             }
         }
+    }
+
+    private fun getCategoryList(list: List<ParkingLot>): List<ParkingLot> {
+        val temp = ArrayList<ParkingLot>()
+        for (item in list) {
+            if (isHourly!!) {
+                if (item.hourly != null) {
+                    temp.add(item)
+                }
+            } else {
+                temp.add(item)
+            }
+        }
+
+        return temp
     }
 
     //화면에 표시할 위치 범위 구하기
