@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.daum.mf.map.api.MapPoint
+import okhttp3.internal.wait
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.domain.entity.NetworkState
 import org.sopar.domain.repository.MapRepository

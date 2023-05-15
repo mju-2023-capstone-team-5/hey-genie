@@ -15,49 +15,77 @@ import org.sopar.data.remote.request.MonthlyReservationInfo
 import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.databinding.FragmentReservationBinding
+import org.sopar.domain.entity.NetworkState
+import org.sopar.presentation.base.BaseErrorDialog
 import org.sopar.presentation.base.BaseFragment
+import org.sopar.presentation.notice.NoticeDialog
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 @AndroidEntryPoint
 class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fragment_reservation) {
     private val args: ReservationFragmentArgs by navArgs()
-    private var price = 0
     private val reservationViewModel by viewModels<ReservationViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setObsever()
         setUp()
         setNumberPicker()
         setCompleteBtnListener()
         setDurationPickerListener()
     }
+
+    private fun setObsever() {
+        reservationViewModel.parkingLot.observe(viewLifecycleOwner) { parkingLot ->
+            binding.textParkingLotName.text = parkingLot.name
+            binding.textParkingLotAddress.text = parkingLot.address
+
+            if (args.isHourly) {
+                binding.textMinCost.text = parkingLot.hourly!!.minimum.toString()
+                binding.textSurcharge.text = parkingLot.hourly!!.surcharge.toString()
+                binding.layoutHourly.visibility = View.VISIBLE
+                binding.textHourlySurcharge.visibility = View.VISIBLE
+            } else {
+                binding.textMinCost.text = parkingLot.monthly!!.minimum.toString()
+                binding.textSurcharge.text = parkingLot.monthly!!.surcharge.toString()
+                binding.layoutMonthly.visibility = View.VISIBLE
+                binding.textMonthlySurcharge.visibility = View.VISIBLE
+            }
+        }
+
+        reservationViewModel.getParkingLotState.observe(viewLifecycleOwner) { state ->
+            if (state == NetworkState.FAIL) {
+                val dialog = BaseErrorDialog(R.string.base_error)
+                dialog.show(requireActivity().supportFragmentManager, "GetParkingLotError")
+            }
+
+        }
+    }
     
     private fun setDurationPickerListener() {
         binding.monthlyDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            val price: Int
-            price = if (args.isHourly) {
-                args.parkingLot.hourly!!.surcharge * newVal
+            val price: Int = if (args.isHourly) {
+                reservationViewModel.parkingLot.value!!.hourly!!.surcharge * newVal
             } else {
-                args.parkingLot.monthly!!.surcharge * newVal
+                reservationViewModel.parkingLot.value!!.monthly!!.surcharge * newVal
             }
 
             binding.btnReservationComplete.text = "${price}원 결제하기"
         }
 
         binding.timeDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            val price: Int
-            price = if (args.isHourly) {
-                args.parkingLot.hourly!!.surcharge * newVal
+            val price: Int = if (args.isHourly) {
+                reservationViewModel.parkingLot.value!!.hourly!!.surcharge * newVal
             } else {
-                args.parkingLot.monthly!!.surcharge * newVal
+                reservationViewModel.parkingLot.value!!.monthly!!.surcharge * newVal
             }
             binding.btnReservationComplete.text = "${price}원 결제하기"
         }
     }
 
     private fun setCompleteBtnListener() {
-        val parkingLot = args.parkingLot
+        val parkingLot = reservationViewModel.parkingLot
         binding.btnReservationComplete.setOnClickListener {
             val price: Int
             val reservation: Reservation
@@ -74,8 +102,8 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val hourlyReservationInfo = HourlyReservationInfo(date, startHour, startMinute, duration)
 
-                minimum = parkingLot.hourly!!.minimum
-                price = parkingLot.hourly!!.surcharge * duration
+                minimum = parkingLot.value!!.hourly!!.minimum
+                price = parkingLot.value!!.hourly!!.surcharge * duration
                 reservation = Reservation(0, 0, 0, null, hourlyReservationInfo, price)
             } else {
                 val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
@@ -86,13 +114,13 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val monthlyReservationInfo = MonthlyReservationInfo(date, duration)
 
-                minimum = parkingLot.monthly!!.minimum
-                price = parkingLot.monthly!!.surcharge * duration
+                minimum = parkingLot.value!!.monthly!!.minimum
+                price = parkingLot.value!!.monthly!!.surcharge * duration
                 reservation = Reservation(0, 0 ,0, monthlyReservationInfo, null, price)
             }
 
             if (price >= minimum) {
-                val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(reservation, parkingLot)
+                val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(reservation, parkingLot.value!!)
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(requireContext(), "최소 금액을 채워주세요!🙏", Toast.LENGTH_SHORT).show()
@@ -116,27 +144,10 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
 
     private fun setUp() {
         binding.timePicker.setIs24HourView(true)
-        val parkingLot: ParkingLot
-
         if (args.parkingLot != null) {
-            parkingLot = args.parkingLot
+            reservationViewModel.setParkingLot(args.parkingLot!!)
         } else {
-
-        }
-
-        binding.textParkingLotName.text = parkingLot.name
-        binding.textParkingLotAddress.text = parkingLot.address
-
-        if (args.isHourly) {
-            binding.textMinCost.text = parkingLot.hourly!!.minimum.toString()
-            binding.textSurcharge.text = parkingLot.hourly!!.surcharge.toString()
-            binding.layoutHourly.visibility = View.VISIBLE
-            binding.textHourlySurcharge.visibility = View.VISIBLE
-        } else {
-            binding.textMinCost.text = parkingLot.monthly!!.minimum.toString()
-            binding.textSurcharge.text = parkingLot.monthly!!.surcharge.toString()
-            binding.layoutMonthly.visibility = View.VISIBLE
-            binding.textMonthlySurcharge.visibility = View.VISIBLE
+            reservationViewModel.getParkingLotsById(args.parkingLotId)
         }
     }
 

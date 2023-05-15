@@ -20,11 +20,14 @@ class ReservationViewModel @Inject constructor(
 ): ViewModel() {
     private val _getParkingLotState = MutableLiveData(NetworkState.LOADING)
     val getParkingLotState: LiveData<NetworkState> = _getParkingLotState
+    private val _parkingLot = MutableLiveData<ParkingLot>()
+    val parkingLot: LiveData<ParkingLot> = _parkingLot
 
-    fun getParkingLotsById(id: Int): ParkingLot {
+    fun getParkingLotsById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = mapRepository.getParkingLotsById(id)
+                _parkingLot.postValue(response.body())
                 Log.e("getParkingLotById", response.body().toString())
             } catch (e: IOException) {
                 _getParkingLotState.postValue(NetworkState.FAIL)
@@ -32,5 +35,8 @@ class ReservationViewModel @Inject constructor(
         }
     }
 
+    fun setParkingLot(parkingLot: ParkingLot) {
+        _parkingLot.postValue(parkingLot)
+    }
 
 }

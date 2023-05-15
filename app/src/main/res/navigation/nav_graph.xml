@@ -60,7 +60,8 @@
         tools:layout="@layout/fragment_reservation" >
         <argument
             android:name="parkingLot"
-            app:argType="org.sopar.data.remote.response.ParkingLot" />
+            app:argType="org.sopar.data.remote.response.ParkingLot"
+            app:nullable="true" />
         <argument
             android:name="isHourly"
             app:argType="boolean" />

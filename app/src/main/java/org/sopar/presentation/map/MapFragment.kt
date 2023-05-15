@@ -42,6 +42,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val mapViewModel by viewModels<MapViewModel>()
     private var mapView: MapView? = null
+    private lateinit var customMapViewEventListener: MapViewEventListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,66 +57,63 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val customBalloonAdapter = CustomBalloonAdapter(layoutInflater)
+        customBalloonAdapter.setOnItemClickListener{
+            val action = MapFragmentDirections.actionFragmentMapToReservationFragment2(null, isHourly!!, it)
+            findNavController().navigate(action)
+        }
+        val poiItemEventListener = MarkerEventClickListener()
+
+        poiItemEventListener.setOnItemClickListener {
+            val action = MapFragmentDirections.actionFragmentMapToReservationFragment2(null, isHourly!!, it)
+            findNavController().navigate(action)
+        }
+
+        customMapViewEventListener = object: MapViewEventListener {
+            override fun onMapViewInitialized(p0: MapView?) {
+                val place = args.place
+                if (place == null) {
+                    mapView!!.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+                } else {
+                    //검색 결과가 있을 경우, 해당 위치로 지도 셋팅
+                    mapView!!.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
+                    setSearchResult(place)
+                }
+            }
+
+            override fun onMapViewCenterPointMoved(p0: MapView?, p1: MapPoint?) {}
+
+            override fun onMapViewZoomLevelChanged(p0: MapView?, p1: Int) {}
+
+            override fun onMapViewSingleTapped(p0: MapView?, p1: MapPoint?) {}
+
+            override fun onMapViewDoubleTapped(p0: MapView?, p1: MapPoint?) {}
+
+            override fun onMapViewLongPressed(p0: MapView?, p1: MapPoint?) {}
+
+            override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {}
+
+            override fun onMapViewDragEnded(p0: MapView?, p1: MapPoint?) {}
+
+            override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
+                Log.e("current moved update", p1.toString())
+                mapViewModel.updateMapCenter(p1)
+            }
+        }
 
         mapView = MapView(requireActivity())
         mapView?.apply {
-            setMapViewEventListener(object: MapViewEventListener {
-                override fun onMapViewInitialized(p0: MapView?) {
-                    val place = args.place
-                    if (place == null) {
-                        currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-                    } else {
-                        //검색 결과가 있을 경우, 해당 위치로 지도 셋팅
-                        currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
-                        setSearchResult(place)
-                    }
-                }
-
-                override fun onMapViewCenterPointMoved(p0: MapView?, p1: MapPoint?) {}
-
-                override fun onMapViewZoomLevelChanged(p0: MapView?, p1: Int) {}
-
-                override fun onMapViewSingleTapped(p0: MapView?, p1: MapPoint?) {}
-
-                override fun onMapViewDoubleTapped(p0: MapView?, p1: MapPoint?) {}
-
-                override fun onMapViewLongPressed(p0: MapView?, p1: MapPoint?) {}
-
-                override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {}
-
-                override fun onMapViewDragEnded(p0: MapView?, p1: MapPoint?) {}
-
-                override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
-                    Log.e("current moved update", p1.toString())
-                    mapViewModel.updateMapCenter(p1)
-                }
-            })
+            setMapViewEventListener(customMapViewEventListener)
+            setCalloutBalloonAdapter(customBalloonAdapter)
+            setPOIItemEventListener(poiItemEventListener)
         }
         binding.mapView.addView(mapView)
-        setMapPOIItemListener()
         setupRecyclerView()
         setObserve()
         setSearchFocusListener()
     }
 
-    private fun setMapPOIItemListener() {
-        mapView!!.setPOIItemEventListener(object: POIItemEventListener{
-            override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-//                val action = MapFragmentDirections.actionFragmentMapToReservationFragment2()
-            }
 
-            override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {}
-
-            override fun onCalloutBalloonOfPOIItemTouched(
-                p0: MapView?,
-                p1: MapPOIItem?,
-                p2: MapPOIItem.CalloutBalloonButtonType?
-            ) {}
-
-            override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {}
-
-        })
-    }
 
     private fun setObserve() {
         mapViewModel.getParkingLotState.observe(viewLifecycleOwner) { state ->
@@ -145,6 +143,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         mapViewModel.mapCenter.observe(viewLifecycleOwner) { center ->
             if (center?.mapPointGeoCoord?.latitude != -1.0E7) {
                 Log.d("center check", center.mapPointGeoCoord.latitude.toString())
+                mapView!!.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
                 getBound()
             }
         }
