@@ -21,4 +21,8 @@ class MapRepositoryImp @Inject constructor(
         return api.getParkingLots(x1, y1, x2, y2)
     }
 
+    override suspend fun getParkingLotsById(id: Int): Response<ParkingLot> {
+        return api.getParkingLotsById(id)
+    }
+
 }

@@ -10,6 +10,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SoparRetrofitApi {
@@ -31,4 +32,9 @@ interface SoparRetrofitApi {
       @Query("x2") x2: Double,
       @Query("y2") y2: Double
     ): Response<List<ParkingLot>>
+
+    @GET("/api/v1/parking-lots/{id}")
+    suspend fun getParkingLotsById(
+        @Path("id") id: Int
+    ): Response<ParkingLot>
 }
