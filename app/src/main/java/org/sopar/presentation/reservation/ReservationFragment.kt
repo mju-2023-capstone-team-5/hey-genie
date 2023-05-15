@@ -5,20 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
 import org.sopar.data.remote.request.HourlyReservationInfo
 import org.sopar.data.remote.request.MonthlyReservationInfo
 import org.sopar.data.remote.request.Reservation
+import org.sopar.data.remote.response.ParkingLot
 import org.sopar.databinding.FragmentReservationBinding
 import org.sopar.presentation.base.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+@AndroidEntryPoint
 class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fragment_reservation) {
     private val args: ReservationFragmentArgs by navArgs()
     private var price = 0
+    private val reservationViewModel by viewModels<ReservationViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -111,8 +116,14 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
 
     private fun setUp() {
         binding.timePicker.setIs24HourView(true)
+        val parkingLot: ParkingLot
 
-        val parkingLot = args.parkingLot
+        if (args.parkingLot != null) {
+            parkingLot = args.parkingLot
+        } else {
+
+        }
+
         binding.textParkingLotName.text = parkingLot.name
         binding.textParkingLotAddress.text = parkingLot.address
 
