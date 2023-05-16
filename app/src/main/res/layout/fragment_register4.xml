@@ -5,51 +5,174 @@
     android:layout_height="match_parent"
     android:layout_marginTop="80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.register.RegisterFragment1">
+    tools:context=".presentation.register.RegisterFragment3">
 
-    <TextView
-        android:id="@+id/text_step_parking_lot_image"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/register_step_parking_lot_image"
-        android:textSize="22sp"
-        android:gravity="start"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <ImageView
-        android:id="@+id/image_parking_lot"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/text_step_parking_lot_image"
-        app:layout_constraintBottom_toTopOf="@id/text_step"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <ImageView
-        android:id="@+id/image_gallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_gallery"
-        app:layout_constraintBottom_toTopOf="@id/text_step"
-        app:layout_constraintTop_toBottomOf="@id/text_step_parking_lot_image"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <TextView
-        android:id="@+id/text_step"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="4/8"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_next_step"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="80dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/register_step_time"
+                android:textSize="22sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/register_step_day"
+                android:textSize="22sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/day_btn_group1"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_mon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="월"
+                    app:cornerRadius="10dp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_tue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="화"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_wed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="수"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_thu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="목"
+                    app:cornerRadius="10dp"
+                    android:textStyle="bold"/>
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/day_btn_group2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_fri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="금"
+                    app:cornerRadius="10dp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_sau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="토"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/day_of_month_sun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일"
+                    app:cornerRadius="10dp"
+                    android:textStyle="bold"/>
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/register_step_time_setting"
+            android:textSize="22sp"
+                android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_reservation_time"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_for_adding_time"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/base_blue_round_shape"
+                android:text="+ 시간 추가"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/reservation_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/base_gray_round_shape"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/layout_space">
+
+                <TimePicker
+                    android:id="@+id/start_time_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:timePickerMode="spinner"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="-"/>
+
+                <TimePicker
+                    android:id="@+id/end_time_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:timePickerMode="spinner"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next_step"
@@ -57,7 +180,7 @@
         android:layout_height="wrap_content"
         android:background="@color/base_blue"
         android:textColor="@color/white"
-        android:text="@string/sign_up_btn_complete"
+        android:text="@string/register_btn_next"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="20sp"
@@ -65,5 +188,4 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
