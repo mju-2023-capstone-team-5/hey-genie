@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:background="@color/base_blue"
         android:textColor="@color/white"
-        android:text="@string/sign_up_btn_complete"
+        android:text="@string/register_btn_next"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="20sp"
