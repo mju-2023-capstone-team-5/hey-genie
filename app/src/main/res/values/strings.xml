@@ -85,7 +85,7 @@
     <string name="register_step_document_image">주차장 인증을 위한 토지대장을\n 등록해주세요.</string>
     <string name="register_step_day_time">주차장 공요 요일과 시간을 알려주세요.</string>
     <string name="register_step_rate">주차장 요금을 설정해주세요.</string>
-    <string name="register_step_contact_info">주차장 문의에 사용될 연락처를 알려주세요.</string>
+    <string name="register_step_contact_info">주차장 문의에 사용될\n연락처를 알려주세요.</string>
     <string name="register_step_caution">주차장 이용 시 주의사항이 있을까요?</string>
     <string name="register_step_time">주차장 공유 요일과 시간을 알려주세요.</string>
     <string name="register_step_day">요일</string>
