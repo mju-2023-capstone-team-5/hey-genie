@@ -87,6 +87,9 @@
     <string name="register_step_rate">주차장 요금을 설정해주세요.</string>
     <string name="register_step_contact_info">주차장 문의에 사용될 연락처를 알려주세요.</string>
     <string name="register_step_caution">주차장 이용 시 주의사항이 있을까요?</string>
+    <string name="register_step_time">주차장 공유 요일과 시간을 알려주세요.</string>
+    <string name="register_step_day">요일</string>
+    <string name="register_step_time_setting">시간</string>
 
     <string name="register_text_address">주차장 주소</string>
     <string name="register_text_parking_lot_name">주차장 이름</string>

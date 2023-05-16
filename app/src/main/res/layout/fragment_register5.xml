@@ -5,41 +5,182 @@
     android:layout_height="match_parent"
     android:layout_marginTop="80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.register.RegisterFragment1">
+    tools:context=".presentation.register.RegisterFragment2">
 
     <TextView
-        android:id="@+id/text_step_document_image"
+        android:id="@+id/text_step_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="@string/register_step_document_image"
+        android:text="@string/register_step_rate"
         android:textSize="22sp"
         android:gravity="start"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_hourly"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <ImageView
-        android:id="@+id/image_document"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/text_step_document_image"
-        app:layout_constraintBottom_toTopOf="@id/text_step"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <ImageView
-        android:id="@+id/image_gallery"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_hourly"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon_gallery"
-        app:layout_constraintBottom_toTopOf="@id/text_step"
-        app:layout_constraintTop_toBottomOf="@id/text_step_document_image"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/base_gray_round_shape"
+        app:layout_constraintTop_toBottomOf="@id/text_step_rate"
+        app:layout_constraintBottom_toTopOf="@id/layout_monthly"
+        app:layout_constraintRight_toRightOf="@id/text_step_rate"
+        app:layout_constraintLeft_toLeftOf="@id/text_step_rate">
 
+        <TextView
+            android:id="@+id/text_hourly_parking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/register_text_hourly_rate"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <Switch
+            android:id="@+id/switch_for_hourly_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/layout_hourly_parking"
+            app:layout_constraintTop_toBottomOf="@id/text_hourly_parking"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_text_surcharge"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_text_hourly_min_cost"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_minimum_hint"
+                android:padding="12sp"
+                android:maxLines="1"
+                android:backgroundTint="@color/base_blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_text_surcharge"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_text_hourly_surcharge"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hourly_surcharge_hint"
+                android:padding="12sp"
+                android:maxLines="1"
+                android:backgroundTint="@color/base_blue"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_monthly"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/base_gray_round_shape"
+        app:layout_constraintTop_toBottomOf="@id/layout_hourly"
+        app:layout_constraintRight_toRightOf="@id/text_step_rate"
+        app:layout_constraintLeft_toLeftOf="@id/text_step_rate">
+
+        <TextView
+            android:id="@+id/text_monthly_parking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/register_text_monthly_rate"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <Switch
+            android:id="@+id/switch_for_monthly_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/layout_monthly_parking"
+            app:layout_constraintTop_toBottomOf="@id/text_monthly_parking"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_text_surcharge"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_text_monthly_min_cost"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_minimum_hint"
+                android:padding="12sp"
+                android:maxLines="1"
+                android:backgroundTint="@color/base_blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_text_surcharge"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_text_monthly_surcharge"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hourly_surcharge_hint"
+                android:padding="12sp"
+                android:maxLines="1"
+                android:backgroundTint="@color/base_blue"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/text_step"
         android:layout_width="wrap_content"
@@ -57,7 +198,7 @@
         android:layout_height="wrap_content"
         android:background="@color/base_blue"
         android:textColor="@color/white"
-        android:text="@string/sign_up_btn_complete"
+        android:text="@string/register_btn_next"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="20sp"
@@ -65,5 +206,4 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
