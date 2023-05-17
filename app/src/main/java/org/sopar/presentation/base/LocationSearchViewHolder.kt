@@ -1,4 +1,4 @@
-package org.sopar.presentation.search
+package org.sopar.presentation.base
 
 import androidx.recyclerview.widget.RecyclerView
 import org.sopar.data.remote.response.Place
