@@ -52,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="월"
+                    style="?attr/materialButtonOutlinedStyle"
                     app:cornerRadius="10dp"
                     android:textStyle="bold"/>
 
@@ -60,6 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="화"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:textStyle="bold"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -67,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="수"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:textStyle="bold"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -74,6 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="목"
+                    style="?attr/materialButtonOutlinedStyle"
                     app:cornerRadius="10dp"
                     android:textStyle="bold"/>
 
@@ -91,6 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="금"
+                    style="?attr/materialButtonOutlinedStyle"
                     app:cornerRadius="10dp"
                     android:textStyle="bold"/>
 
@@ -99,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="토"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:textStyle="bold"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -106,6 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일"
+                    style="?attr/materialButtonOutlinedStyle"
                     app:cornerRadius="10dp"
                     android:textStyle="bold"/>
 
