@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
@@ -84,10 +85,14 @@ class RegisterFragment3 : BaseFragment<FragmentRegister3Binding>(R.layout.fragme
 
         binding.btnNextStep.setOnClickListener {
             Log.d("checked list", checkedList.toString())
-            viewModel.type = checkedList.toList()
+            if (checkedList.size > 0) {
+                viewModel.type = checkedList.toList()
 
-            val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
-            viewPager.setCurrentItem(3, true)
+                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+                viewPager.setCurrentItem(3, true)
+            } else {
+                Toast.makeText(context, "주차 가능한 차종을 모두 알려주세요!", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
