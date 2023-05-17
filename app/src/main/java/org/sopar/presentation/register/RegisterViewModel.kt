@@ -25,13 +25,13 @@ class RegisterViewModel @Inject constructor(
    private val parkingLotRepository: ParkingLotRepository,
    private val kakaoRepository: KakaoRepository,
 ): ViewModel() {
-    val name: String? = null
+    var name: String? = null
     var address: String? = null
     val freeInformation: String? = null
     val phoneNumber: String? = null
     var latitude: Double? = null
     var longitude: Double? = null
-    val totalSpace: Int? = null
+    var totalSpace: Int? = null
     val remainingSpace: Int? = null
     val ownerId: Int? = null
     val minimum: Int? = null
