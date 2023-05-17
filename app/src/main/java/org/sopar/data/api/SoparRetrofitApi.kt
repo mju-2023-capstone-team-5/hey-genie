@@ -3,6 +3,7 @@ package org.sopar.data.api
 import org.sopar.data.remote.request.LoginRequest
 import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
+import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.SearchResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -22,5 +23,10 @@ interface SoparRetrofitApi {
     suspend fun userRegister(
         @Body userRegisterRequest: UserRegisterRequest
     ): Response<String>
+
+    @POST("/api/v1/parking-lots")
+    suspend fun registerParkingLot(
+        @Body parkingLot: ParkingLot
+    ): Response<ParkingLot>
 
 }
