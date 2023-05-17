@@ -36,7 +36,7 @@ class RegisterViewModel @Inject constructor(
     val ownerId: Int? = null
     val minimum: Int? = null
     val surcharge: Int? = null
-    val type: List<String>? = null
+    var type: List<String>? = null
     val availableDay: List<String>? = null
     val availableTime: List<TimeSlot>? = null
     val monthly: Rate? = null
