@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,11 +27,18 @@ class RegisterFragment2 : BaseFragment<FragmentRegister2Binding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNextStep.setOnClickListener {
-            viewModel.name = binding.edtTextName.text.toString()
-            viewModel.totalSpace = Integer.parseInt(binding.edtTextSpace.text.toString())
+            val name = binding.edtTextName.text.toString()
+            val totalSpace = binding.edtTextSpace.text.toString()
+            if (name.isNotEmpty() && totalSpace.isNotEmpty()) {
+                viewModel.name = binding.edtTextName.text.toString()
+                viewModel.totalSpace = Integer.parseInt(binding.edtTextSpace.text.toString())
 
-            val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
-            viewPager.setCurrentItem(2, true)
+                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+                viewPager.setCurrentItem(2, true)
+            } else {
+                Toast.makeText(context, "필요한 정보를 모두 입력해주세요!", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 
