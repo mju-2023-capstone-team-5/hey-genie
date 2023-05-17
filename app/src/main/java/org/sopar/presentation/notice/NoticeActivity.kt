@@ -45,9 +45,8 @@ class NoticeActivity : AppCompatActivity() {
     private fun setupNotice() {
         //notice 가져오기
         val temp = listOf(
-            Notice("dfwfdfwdfw", "wdfwfdwfwfwdf"),
-            Notice("dfwfdfwdfw", "wdfwfdwfwfwdf"),
-            Notice("dfwfdfwdfw", "wdfwfdwfwfwdf"),
+            Notice("주차장 등록 관련", "등록 후 승인이 완료되면 알림이 갑니다! :)"),
+            Notice("공지사항", "등록 시 본인 소유 주차장을 등록해주세요! 토지 대장을 통해 확인이 이루어집니다!"),
         )
 
         //notice 없을 경우,
