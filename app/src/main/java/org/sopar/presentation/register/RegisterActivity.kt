@@ -1,16 +1,14 @@
 package org.sopar.presentation.register
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import org.sopar.databinding.ActivityMainBinding
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
+import org.sopar.R
 import org.sopar.databinding.ActivityRegisterBinding
 
-class RegisterActivity : FragmentActivity() {
+@AndroidEntryPoint
+class RegisterActivity :AppCompatActivity() {
 
     private val binding: ActivityRegisterBinding by lazy {
         ActivityRegisterBinding.inflate(layoutInflater)
@@ -19,19 +17,39 @@ class RegisterActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setToolBar()
+        setViewPager()
+    }
 
-        val adapter = RegisterRecyclerViewAdapter(this)
-        adapter.addFragment(RegisterFragment1())
-        adapter.addFragment(RegisterFragment2())
-        adapter.addFragment(RegisterFragment3())
-        adapter.addFragment(RegisterFragment4())
-        adapter.addFragment(RegisterFragment5())
-        adapter.addFragment(RegisterFragment6())
-        adapter.addFragment(RegisterParkingLotImageFragment())
-        adapter.addFragment(RegisterPermissionImageFragment())
+    private fun setViewPager() {
 
-        binding.registerViewPager.adapter = adapter
+        val pagerAdapter = RegisterRecyclerViewAdapter(this)
+        pagerAdapter.addFragment(RegisterFragment1())
+        pagerAdapter.addFragment(RegisterFragment2())
+        pagerAdapter.addFragment(RegisterFragment3())
+        pagerAdapter.addFragment(RegisterFragment4())
+        pagerAdapter.addFragment(RegisterFragment5())
+        pagerAdapter.addFragment(RegisterFragment6())
+        pagerAdapter.addFragment(RegisterParkingLotImageFragment())
+        pagerAdapter.addFragment(RegisterPermissionImageFragment())
+
+        binding.registerViewPager.apply {
+            adapter = pagerAdapter
+            isUserInputEnabled = false
+        }
 
     }
 
+    private fun setToolBar() {
+        setSupportActionBar(binding.noticeToolbar)
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return true
+    }
 }
