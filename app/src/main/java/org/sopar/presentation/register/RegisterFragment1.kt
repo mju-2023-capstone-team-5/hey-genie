@@ -45,7 +45,7 @@ class RegisterFragment1 : BaseFragment<FragmentRegister1Binding>(R.layout.fragme
 
     private fun init() {
         binding.btnNextStep.setOnClickListener {
-            if (binding.edtTextAddress.text.toString().isNotEmpty()) {
+            if ((binding.edtTextAddress.text.toString().isNotEmpty()) and (viewModel.latitude != null)) {
                 val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
                 viewPager.setCurrentItem(1, true)
             } else {
