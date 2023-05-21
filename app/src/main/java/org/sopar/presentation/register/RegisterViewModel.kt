@@ -43,7 +43,7 @@ class RegisterViewModel @Inject constructor(
     var hourly: Rate? = null
 
     var imageUrl: String? = null
-    val permissionUrl: String? = null
+    var permissionUrl: String? = null
 
     private val _searchResult = MutableLiveData<List<Place>>(listOf())
     val searchResult: LiveData<List<Place>> get() = _searchResult
