@@ -42,6 +42,7 @@
     <string name="base_ok">확인</string>
     <string name="base_error">오류가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="sign_up_error">기본 정보를 채워주세요!🥲</string>
+    <string name="permission_error">필요한 권한을 승인해주세요!</string>
 
     //description
     <string name="btn_for_log_out">button_for_log_out</string>
