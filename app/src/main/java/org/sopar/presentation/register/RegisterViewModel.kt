@@ -27,8 +27,8 @@ class RegisterViewModel @Inject constructor(
 ): ViewModel() {
     var name: String? = null
     var address: String? = null
-    val freeInformation: String? = null
-    val phoneNumber: String? = null
+    var freeInformation: String? = null
+    var phoneNumber: String? = null
     var latitude: Double? = null
     var longitude: Double? = null
     var totalSpace: Int? = null
