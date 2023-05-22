@@ -1,11 +1,14 @@
 package org.sopar.presentation.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
 import org.sopar.databinding.ActivityRegisterBinding
+import org.sopar.presentation.entry.EntryActivity
+import org.sopar.presentation.main.MainActivity
 
 @AndroidEntryPoint
 class RegisterActivity :AppCompatActivity() {
@@ -49,7 +52,13 @@ class RegisterActivity :AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            finish()
+            val cur = binding.registerViewPager.currentItem
+            if (cur == 0) {
+                val intent = Intent(this, EntryActivity::class.java)
+                startActivity(intent)
+            } else {
+                binding.registerViewPager.setCurrentItem(cur-1, true)
+            }
         }
         return true
     }
