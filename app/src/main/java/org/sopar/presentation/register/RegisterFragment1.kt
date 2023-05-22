@@ -1,31 +1,24 @@
 package org.sopar.presentation.register
 
-import android.location.Location
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
-import org.sopar.data.remote.response.Place
 import org.sopar.databinding.FragmentRegister1Binding
-import org.sopar.domain.entity.NetworkState
-import org.sopar.presentation.base.BaseErrorDialog
 import org.sopar.presentation.base.BaseFragment
 import org.sopar.presentation.base.LocationSearchAdapter
-import org.sopar.presentation.search.SearchFragmentDirections
 
 @AndroidEntryPoint
 class RegisterFragment1 : BaseFragment<FragmentRegister1Binding>(R.layout.fragment_register1) {
-    private val viewModel by viewModels<RegisterViewModel>()
+    private val viewModel by activityViewModels<RegisterViewModel>()
     private lateinit var locationSearchAdapter: LocationSearchAdapter
 
     override fun getFragmentBinding(
@@ -45,13 +38,14 @@ class RegisterFragment1 : BaseFragment<FragmentRegister1Binding>(R.layout.fragme
 
     private fun init() {
         binding.btnNextStep.setOnClickListener {
-            if ((binding.edtTextAddress.text.toString().isNotEmpty()) and (viewModel.latitude != null)) {
-                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
-                viewPager.setCurrentItem(1, true)
-            } else {
-                Toast.makeText(context, "주차장 주소를 알려주세요!", Toast.LENGTH_SHORT).show()
-            }
-
+//            if ((binding.edtTextAddress.text.toString().isNotEmpty()) and (viewModel.latitude != null)) {
+//                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+//                viewPager.setCurrentItem(1, true)
+//            } else {
+//                Toast.makeText(context, "주차장 주소를 알려주세요!", Toast.LENGTH_SHORT).show()
+//            }
+            val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+            viewPager.setCurrentItem(1, true)
         }
     }
 

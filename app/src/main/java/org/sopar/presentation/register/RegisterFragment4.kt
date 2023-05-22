@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,11 +13,10 @@ import org.sopar.R
 import org.sopar.data.remote.response.TimeSlot
 import org.sopar.databinding.FragmentRegister4Binding
 import org.sopar.presentation.base.BaseFragment
-import org.sopar.presentation.base.LocationSearchAdapter
 
 @AndroidEntryPoint
 class RegisterFragment4 : BaseFragment<FragmentRegister4Binding>(R.layout.fragment_register4) {
-    private val viewModel by viewModels<RegisterViewModel>()
+    private val viewModel by activityViewModels<RegisterViewModel>()
     private val checkedDay = mutableSetOf<String>()
     private val checkedTime = mutableSetOf<Int>()
     private val timeSlots = mutableListOf<TimeSlot>()

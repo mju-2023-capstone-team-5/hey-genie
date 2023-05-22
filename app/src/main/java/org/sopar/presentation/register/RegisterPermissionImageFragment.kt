@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
@@ -18,7 +18,7 @@ import org.sopar.util.Constants
 
 @AndroidEntryPoint
 class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionImageBinding>(R.layout.fragment_register_permission_image) {
-    private val viewModel by viewModels<RegisterViewModel> ()
+    private val viewModel by activityViewModels<RegisterViewModel>()
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
@@ -54,7 +54,8 @@ class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionIm
             if (viewModel.permissionUrl == null) {
                 Toast.makeText(context, "토지 대장을 등록해주세요!", Toast.LENGTH_SHORT).show()
             } else {
-                //등록 정보 확인 페이지로 이동
+                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+                viewPager.setCurrentItem(8, true)
             }
         }
     }

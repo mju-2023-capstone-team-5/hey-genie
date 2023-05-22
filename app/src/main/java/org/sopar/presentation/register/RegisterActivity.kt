@@ -32,6 +32,7 @@ class RegisterActivity :AppCompatActivity() {
         pagerAdapter.addFragment(RegisterFragment6())
         pagerAdapter.addFragment(RegisterParkingLotImageFragment())
         pagerAdapter.addFragment(RegisterPermissionImageFragment())
+        pagerAdapter.addFragment(RegisterCompleteFragment())
 
         binding.registerViewPager.apply {
             adapter = pagerAdapter

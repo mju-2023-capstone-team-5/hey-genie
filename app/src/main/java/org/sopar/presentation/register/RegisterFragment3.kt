@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
@@ -16,7 +16,7 @@ import org.sopar.presentation.base.BaseFragment
 @AndroidEntryPoint
 class RegisterFragment3 : BaseFragment<FragmentRegister3Binding>(R.layout.fragment_register3) {
     private val checkedList = mutableSetOf<String>()
-    private val viewModel by viewModels<RegisterViewModel>()
+    private val viewModel by activityViewModels<RegisterViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUp()

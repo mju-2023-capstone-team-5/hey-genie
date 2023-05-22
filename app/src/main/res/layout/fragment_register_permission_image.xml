@@ -42,8 +42,8 @@
 
     <TextView
         android:id="@+id/text_step"
-        android:layout_width="18dp"
-        android:layout_height="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="8/8"
         android:textSize="20sp"
