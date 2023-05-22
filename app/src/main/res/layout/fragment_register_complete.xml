@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.register.RegisterFragment2">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="100dp"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_register_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layout_step_check"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <TextView
+                    android:id="@+id/text_parking_lot_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/layout_info"
+                    android:text="dfsfs"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkbox_show_info"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:button="@null"
+                    app:layout_constraintTop_toTopOf="@id/text_parking_lot_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/text_parking_lot_name"
+                    android:background="@drawable/register_info_selector"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_info"
+                    app:layout_constraintTop_toBottomOf="@id/checkbox_show_info"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_address"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_parking_lot_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_space"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_parking_lot_space"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_sharing_days"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_sharing_days"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_sharing_times"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_sharing_times"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_car_types"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_car_types"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_hourly_rate"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_hourly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:text="제공 안 함"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_monthly_rate"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_monthly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_up_phone_number"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_caution"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_caution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:text="없음"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_step_check"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toBottomOf="@id/layout_register_info"
+                app:layout_constraintRight_toRightOf="@id/layout_register_info"
+                app:layout_constraintLeft_toLeftOf="@id/layout_register_info">
+
+                <TextView
+                    android:id="@+id/text_complete_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/step_line1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="@string/complete_info"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:id="@+id/step_line1"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_blue_round_shape"
+                    app:layout_constraintTop_toBottomOf="@id/text_complete_info"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/text_step_register"/>
+
+
+                <TextView
+                    android:id="@+id/text_step_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/step_line1"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/step_line2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="@string/step_register"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_check"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintRight_toLeftOf="@id/text_step_register"
+                    app:layout_constraintTop_toTopOf="@id/text_step_register"
+                    app:layout_constraintBottom_toBottomOf="@id/text_step_register"/>
+
+                <View
+                    android:id="@+id/step_line2"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_blue_round_shape"
+                    app:layout_constraintTop_toBottomOf="@id/text_step_register"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/text_step_check"/>
+
+
+                <TextView
+                    android:id="@+id/text_step_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/step_line2"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/step_line3"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="@string/step_check"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_uncheck"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintRight_toLeftOf="@id/text_step_check"
+                    app:layout_constraintTop_toTopOf="@id/text_step_check"
+                    app:layout_constraintBottom_toBottomOf="@id/text_step_check"/>
+
+                <View
+                    android:id="@+id/step_line3"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_blue_round_shape"
+                    app:layout_constraintTop_toBottomOf="@id/text_step_check"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/text_step_check"/>
+
+                <TextView
+                    android:id="@+id/text_step_complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/step_line3"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="@string/step_complete"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_uncheck"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintRight_toLeftOf="@id/text_step_complete"
+                    app:layout_constraintTop_toTopOf="@id/text_step_complete"
+                    app:layout_constraintBottom_toBottomOf="@id/text_step_complete"/>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_blue"
+        android:textColor="@color/white"
+        android:text="@string/register_main_next"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

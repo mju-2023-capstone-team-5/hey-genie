@@ -76,6 +76,12 @@
 
     //notice
     <string name="no_notice">공지사항이 없습니다!:)</string>
+    
+    //register_step
+    <string name="complete_info">등록이 진행 중입니다.</string>
+    <string name="step_register">주차장 등록</string>
+    <string name="step_check">실소유자 심사 중</string>
+    <string name="step_complete">주차장 등록 완료</string>
 
     //register
     <string name="register_step_address">주차장 주소를 입력해주세요.</string>
@@ -96,6 +102,9 @@
     <string name="register_text_parking_lot_name">주차장 이름</string>
     <string name="register_text_space">공유할 지면 수</string>
     <string name="register_text_day">요일</string>
+    <string name="register_text_sharing_days">공유 요일</string>
+    <string name="register_text_sharing_times">공유 시간</string>
+    <string name="register_text_car_types">주차 가능 차종</string>
     <string name="register_text_time">시간</string>
     <string name="register_btn_add_time">+시간 추가</string>
     <string name="register_text_hourly_rate">시간주차</string>
@@ -105,5 +114,6 @@
     <string name="register_text_contact_info">연락처</string>
     <string name="register_text_caution">주의사항</string>
     <string name="register_btn_next">다음 단계</string>
+    <string name="register_main_next">메인으로 가기</string>
     <string name="register_check_info">등록 정보 확인</string>
 </resources>
