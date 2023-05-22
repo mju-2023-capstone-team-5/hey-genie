@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
@@ -49,6 +50,8 @@ class RegisterFragment4 : BaseFragment<FragmentRegister4Binding>(R.layout.fragme
                 val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
                 viewPager.setCurrentItem(4, true)
 
+            } else {
+                Toast.makeText(context, "필요한 정보를 모두 입력해주세요!", Toast.LENGTH_SHORT).show()
             }
         }
     }
