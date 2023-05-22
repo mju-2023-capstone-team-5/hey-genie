@@ -43,7 +43,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/layout_info"
-                    android:text="dfsfs"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
@@ -179,6 +178,7 @@
                         android:layout_height="wrap_content"
                         android:padding="12sp"
                         android:layout_marginTop="7dp"
+                        android:text="제공 안 함"
                         android:background="@drawable/base_white_round_shape"/>
 
                     <TextView

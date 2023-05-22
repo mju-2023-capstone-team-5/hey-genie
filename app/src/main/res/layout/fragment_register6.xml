@@ -7,71 +7,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.register.RegisterFragment2">
 
-    <TextView
-        android:id="@+id/text_step_contact"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/register_step_contact_info"
-        android:textSize="22sp"
-        android:gravity="start"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toTopOf="@id/layout_phone_number"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="70dp">
 
-    <LinearLayout
-        android:id="@+id/layout_phone_number"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/layout_caution"
-        app:layout_constraintRight_toRightOf="@id/text_step_contact"
-        app:layout_constraintLeft_toLeftOf="@id/text_step_contact">
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/register_text_contact_info"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:paddingTop="30dp"/>
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edt_text_phone_number"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/register_contact_info_hint"
-            android:padding="15dp"
-            android:backgroundTint="@color/base_blue"/>
+            <TextView
+                android:id="@+id/text_step_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/register_step_contact_info"
+                android:textSize="22sp"
+                android:gravity="start"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toTopOf="@id/layout_phone_number"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_phone_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/layout_caution"
+                app:layout_constraintRight_toRightOf="@id/text_step_contact"
+                app:layout_constraintLeft_toLeftOf="@id/text_step_contact">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_text_contact_info"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:paddingTop="30dp"/>
 
-    <LinearLayout
-        android:id="@+id/layout_caution"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/layout_phone_number"
-        app:layout_constraintRight_toRightOf="@id/layout_phone_number"
-        app:layout_constraintLeft_toLeftOf="@id/layout_phone_number">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/register_text_caution"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:paddingTop="30dp"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_text_phone_number"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/register_contact_info_hint"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/base_blue"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edt_text_caution"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/register_caution_hint"
-            android:padding="15dp"
-            android:backgroundTint="@color/base_blue"/>
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_caution"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/layout_phone_number"
+                app:layout_constraintRight_toRightOf="@id/layout_phone_number"
+                app:layout_constraintLeft_toLeftOf="@id/layout_phone_number">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_text_caution"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:paddingTop="30dp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_text_caution"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/register_caution_hint"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/base_blue"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <TextView
         android:id="@+id/text_step"
