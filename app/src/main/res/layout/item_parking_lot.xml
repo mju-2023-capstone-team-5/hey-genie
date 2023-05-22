@@ -12,7 +12,9 @@
     <ImageView
         android:id="@+id/image_parking_lot"
         android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:clipToOutline="true"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_sopar_logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
