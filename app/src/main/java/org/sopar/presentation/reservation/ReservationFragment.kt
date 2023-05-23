@@ -64,24 +64,25 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
     }
     
     private fun setDurationPickerListener() {
-        binding.monthlyDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            val price: Int = if (args.isHourly) {
-                reservationViewModel.parkingLot.value!!.hourly!!.surcharge * newVal
-            } else {
-                reservationViewModel.parkingLot.value!!.monthly!!.surcharge * newVal
-            }
 
-            binding.btnReservationComplete.text = "${price}원 결제하기"
-        }
+//         binding.monthlyDurationPicker.setOnValueChangedListener { _, _, newVal ->
+//             val price: Int = if (args.isHourly) {
+//                 reservationViewModel.parkingLot.value!!.hourly!!.surcharge * newVal
+//             } else {
+//                 reservationViewModel.parkingLot.value!!.monthly!!.surcharge * newVal
+//             }
 
-        binding.timeDurationPicker.setOnValueChangedListener { _, _, newVal ->
-            val price: Int = if (args.isHourly) {
-                reservationViewModel.parkingLot.value!!.hourly!!.surcharge * newVal
-            } else {
-                reservationViewModel.parkingLot.value!!.monthly!!.surcharge * newVal
-            }
-            binding.btnReservationComplete.text = "${price}원 결제하기"
-        }
+//             binding.btnReservationComplete.text = "${price}원 결제하기"
+//         }
+
+//         binding.timeDurationPicker.setOnValueChangedListener { _, _, newVal ->
+//             val price: Int = if (args.isHourly) {
+//                 reservationViewModel.parkingLot.value!!.hourly!!.surcharge * newVal
+//             } else {
+//                 reservationViewModel.parkingLot.value!!.monthly!!.surcharge * newVal
+//             }
+//             binding.btnReservationComplete.text = "${price}원 결제하기"
+//         }
     }
 
     private fun setCompleteBtnListener() {
@@ -102,9 +103,10 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val hourlyReservationInfo = HourlyReservationInfo(date, startHour, startMinute, duration)
 
-                minimum = parkingLot.value!!.hourly!!.minimum
-                price = parkingLot.value!!.hourly!!.surcharge * duration
-                reservation = Reservation(0, 0, 0, null, hourlyReservationInfo, price)
+//                 minimum = parkingLot.value!!.hourly!!.minimum
+//                 price = parkingLot.value!!.hourly!!.surcharge * duration
+//                 reservation = Reservation(0, 0, 0, null, hourlyReservationInfo, price)
+
             } else {
                 val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
                 val year = binding.monthlyDatePicker.year
@@ -114,17 +116,17 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                 val date = dateFormat.parse("${year}.${month}.${day}")!!
                 val monthlyReservationInfo = MonthlyReservationInfo(date, duration)
 
-                minimum = parkingLot.value!!.monthly!!.minimum
-                price = parkingLot.value!!.monthly!!.surcharge * duration
-                reservation = Reservation(0, 0 ,0, monthlyReservationInfo, null, price)
+//                 minimum = parkingLot.value!!.monthly!!.minimum
+//                 price = parkingLot.value!!.monthly!!.surcharge * duration
+//                 reservation = Reservation(0, 0 ,0, monthlyReservationInfo, null, price)
             }
 
-            if (price >= minimum) {
-                val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(reservation, parkingLot.value!!)
-                findNavController().navigate(action)
-            } else {
-                Toast.makeText(requireContext(), "최소 금액을 채워주세요!🙏", Toast.LENGTH_SHORT).show()
-            }
+//             if (price >= minimum) {
+//                 val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(reservation, parkingLot.value!!)
+//                 findNavController().navigate(action)
+//             } else {
+//                 Toast.makeText(requireContext(), "최소 금액을 채워주세요!🙏", Toast.LENGTH_SHORT).show()
+//             }
         }
     }
 
@@ -144,6 +146,7 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
 
     private fun setUp() {
         binding.timePicker.setIs24HourView(true)
+
         if (args.parkingLot != null) {
             reservationViewModel.setParkingLot(args.parkingLot!!)
         } else {

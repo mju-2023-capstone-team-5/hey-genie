@@ -185,6 +185,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = parkingLotAdapter
         }
+
     }
 
     private fun setSearchResult(place: Place) {

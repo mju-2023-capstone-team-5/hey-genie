@@ -1,15 +1,19 @@
 package org.sopar.data.api
 
+import okhttp3.MultipartBody
 import org.sopar.data.remote.request.LoginRequest
+import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.UserRegisterRequest
+import org.sopar.data.remote.response.*
 import org.sopar.data.remote.response.LoginResponse
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.SearchResponse
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -25,6 +29,25 @@ interface SoparRetrofitApi {
         @Body userRegisterRequest: UserRegisterRequest
     ): Response<String>
 
+    @POST("/api/v1/parking-lots")
+    suspend fun registerParkingLot(
+        @Body parkingLotRequest: ParkingLotRequest
+    ): Response<ParkingLot>
+
+    @Multipart
+    @POST("/api/v1/parking-lots/{id}/images/info")
+    suspend fun registerParkingLotImage(
+        @Path("id") id: Int,
+        @Part file: MultipartBody.Part?
+    ): Response<String>
+
+    @Multipart
+    @POST("/api/v1/parking-lots/{id}/images/permit-request")
+    suspend fun registerPermissionImage(
+        @Path("id") id: Int,
+        @Part file: List<MultipartBody.Part>
+    ): Response<String>
+
     @GET("/api/v1/parking-lots/rectangle")
     suspend fun getParkingLots(
       @Query("x1") x1: Double,
@@ -37,4 +60,5 @@ interface SoparRetrofitApi {
     suspend fun getParkingLotsById(
         @Path("id") id: Int
     ): Response<ParkingLot>
+
 }

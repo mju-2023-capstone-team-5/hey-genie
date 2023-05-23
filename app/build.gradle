@@ -79,6 +79,7 @@ dependencies {
 
     //moshi
     implementation 'com.squareup.moshi:moshi:1.14.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.14.0'
 
     //Okhttp
@@ -99,6 +100,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.15.1'
     kapt 'com.github.bumptech.glide:compiler:4.15.1'
 
+    //material
+    implementation 'com.google.android.material:material:1.9.0'
+
+    //viewpager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    
     //google play service
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 }

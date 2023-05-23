@@ -1,12 +1,11 @@
-package org.sopar.presentation.search
+package org.sopar.presentation.base
 
-import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import org.sopar.data.remote.response.Place
 import org.sopar.databinding.ItemLocationBinding
-import org.sopar.presentation.base.BaseDiffCallback
 
 class LocationSearchAdapter: ListAdapter<Place, LocationSearchViewHolder>(BaseDiffCallback<Place>()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationSearchViewHolder {

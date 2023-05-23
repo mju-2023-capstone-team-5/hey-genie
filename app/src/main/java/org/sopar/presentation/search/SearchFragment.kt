@@ -15,6 +15,7 @@ import org.sopar.databinding.FragmentSearchBinding
 import org.sopar.domain.entity.NetworkState
 import org.sopar.presentation.base.BaseErrorDialog
 import org.sopar.presentation.base.BaseFragment
+import org.sopar.presentation.base.LocationSearchAdapter
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
