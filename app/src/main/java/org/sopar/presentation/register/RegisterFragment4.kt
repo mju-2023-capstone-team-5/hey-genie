@@ -313,7 +313,7 @@ class RegisterFragment4 : BaseFragment<FragmentRegister4Binding>(R.layout.fragme
                         checkedDay.remove("월")
                     }
                 }
-                R.id.day_of_month_thu -> {
+                R.id.day_of_month_tue -> {
                     if (isChecked) {
                         checkedDay.add("화")
                     } else {
