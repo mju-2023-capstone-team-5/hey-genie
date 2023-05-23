@@ -11,8 +11,6 @@ import org.sopar.domain.repository.AuthRepository
 import org.sopar.domain.repository.KakaoRepository
 import org.sopar.domain.repository.ParkingLotRepository
 import org.sopar.data.repository.MapRepositoryImp
-import org.sopar.domain.repository.AuthRepository
-import org.sopar.domain.repository.KakaoRepository
 import org.sopar.domain.repository.MapRepository
 import javax.inject.Singleton
 

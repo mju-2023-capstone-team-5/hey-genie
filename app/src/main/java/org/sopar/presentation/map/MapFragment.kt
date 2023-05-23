@@ -200,7 +200,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         val point = MapPoint.mapPointWithGeoCoord(parkingLot.latitude, parkingLot.longitude)
         marker.apply {
             itemName = parkingLot.name
-            tag = parkingLot.id
+            tag = parkingLot.id!!
             mapPoint = point
             markerType = MapPOIItem.MarkerType.CustomImage
             //추후 평점 직접 등록

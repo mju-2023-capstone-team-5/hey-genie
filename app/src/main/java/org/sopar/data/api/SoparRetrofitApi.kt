@@ -7,15 +7,8 @@ import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.*
 import org.sopar.data.remote.response.LoginResponse
 import org.sopar.data.remote.response.ParkingLot
-import org.sopar.data.remote.response.SearchResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
-import retrofit2.http.Path
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface SoparRetrofitApi {
 
