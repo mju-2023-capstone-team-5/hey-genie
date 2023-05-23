@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.map.MapFragment">
 
-    <net.daum.mf.map.api.MapView
+    <RelativeLayout
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -51,6 +51,19 @@
                 android:layout_height="40dp"
                 android:src="@drawable/ic_bottom_sheet"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_notice_parking_lot"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:text="범위 내 이용 가능한 주차장이 없습니다!🥲"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_parking_lot"
             android:layout_width="match_parent"
