@@ -38,12 +38,12 @@ class RegisterFragment1 : BaseFragment<FragmentRegister1Binding>(R.layout.fragme
 
     private fun init() {
         binding.btnNextStep.setOnClickListener {
-//            if ((binding.edtTextAddress.text.toString().isNotEmpty()) and (viewModel.latitude != null)) {
-//                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
-//                viewPager.setCurrentItem(1, true)
-//            } else {
-//                Toast.makeText(context, "주차장 주소를 알려주세요!", Toast.LENGTH_SHORT).show()
-//            }
+            if ((binding.edtTextAddress.text.toString().isNotEmpty()) and (viewModel.latitude != null)) {
+                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+                viewPager.setCurrentItem(1, true)
+            } else {
+                Toast.makeText(context, "주차장 주소를 알려주세요!", Toast.LENGTH_SHORT).show()
+            }
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
             viewPager.setCurrentItem(1, true)
         }
