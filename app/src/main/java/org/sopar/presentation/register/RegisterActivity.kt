@@ -53,7 +53,7 @@ class RegisterActivity :AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             val cur = binding.registerViewPager.currentItem
-            if (cur == 0) {
+            if ((cur == 0) or (cur == 8)) {
                 val intent = Intent(this, EntryActivity::class.java)
                 startActivity(intent)
             } else {
