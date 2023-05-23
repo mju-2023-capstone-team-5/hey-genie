@@ -35,7 +35,9 @@ class RegisterFragment6 : BaseFragment<FragmentRegister6Binding>(R.layout.fragme
 
             if (phoneNumber.isNotEmpty()) {
                 viewModel.phoneNumber = phoneNumber
-                viewModel.freeInformation = caution
+                if (caution.isNotEmpty()) {
+                    viewModel.freeInformation = caution
+                }
 
                 val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
                 viewPager.setCurrentItem(6, true)
