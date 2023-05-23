@@ -1,15 +1,19 @@
 package org.sopar.data.api
 
+import com.squareup.moshi.Json
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.sopar.data.remote.request.LoginRequest
+import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.UserRegisterRequest
-import org.sopar.data.remote.response.LoginResponse
-import org.sopar.data.remote.response.ParkingLot
-import org.sopar.data.remote.response.SearchResponse
+import org.sopar.data.remote.response.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface SoparRetrofitApi {
@@ -26,7 +30,7 @@ interface SoparRetrofitApi {
 
     @POST("/api/v1/parking-lots")
     suspend fun registerParkingLot(
-        @Body parkingLot: ParkingLot
+        @Body parkingLotRequest: ParkingLotRequest
     ): Response<ParkingLot>
 
 }
