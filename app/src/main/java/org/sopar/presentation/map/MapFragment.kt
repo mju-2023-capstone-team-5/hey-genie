@@ -16,15 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import net.daum.mf.map.api.MapCircle
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapView.MapViewEventListener
-import net.daum.mf.map.api.MapView.POIItemEventListener
 import org.sopar.R
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.Place
@@ -39,7 +34,6 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     private val args: MapFragmentArgs by navArgs()
     private val parkingLotAdapter: ParkingLotAdapter = ParkingLotAdapter()
     private var isHourly: Boolean? = null
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val mapViewModel by viewModels<MapViewModel>()
     private var mapView: MapView? = null
     private lateinit var customMapViewEventListener: MapViewEventListener
@@ -50,7 +44,6 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
         }
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         isHourly = requireActivity().intent.extras?.getBoolean("isHourly")
 
     }
@@ -126,8 +119,8 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         mapViewModel.parkingLots.observe(viewLifecycleOwner) { parkingLots ->
             if (parkingLots.isNotEmpty()) {
                 val temp = getCategoryList(parkingLots)
-                Log.d("adapter submit", temp.toString())
-                parkingLotAdapter.submitList(temp)
+                parkingLotAdapter.submitList(temp.toMutableList())
+
                 for (item in temp) {
                     setCustomPicker(item)
                 }
@@ -170,7 +163,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         val x2 = mapView!!.mapPointBounds.topRight.mapPointGeoCoord.latitude
         val y1 =  mapView!!.mapPointBounds.bottomLeft.mapPointGeoCoord.longitude
         val y2 = mapView!!.mapPointBounds.topRight.mapPointGeoCoord.longitude
-        mapViewModel.getParkingLots(x1, x2, y1, y2)
+        mapViewModel.getParkingLots(y1, y2, x1, x2)
     }
 
     private fun setupRecyclerView() {
@@ -197,7 +190,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
 
     private fun setCustomPicker(parkingLot: ParkingLot) {
         val marker = MapPOIItem()
-        val point = MapPoint.mapPointWithGeoCoord(parkingLot.latitude, parkingLot.longitude)
+        val point = MapPoint.mapPointWithGeoCoord(parkingLot.longitude, parkingLot.latitude)
         marker.apply {
             itemName = parkingLot.name
             tag = parkingLot.id!!
