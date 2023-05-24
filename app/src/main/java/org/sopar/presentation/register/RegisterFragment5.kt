@@ -61,7 +61,7 @@ class RegisterFragment5 : BaseFragment<FragmentRegister5Binding>(R.layout.fragme
                         viewModel.hourly = Rate(hourlyMin.toInt(), hourlySurcharge.toInt())
                     }
                     if (binding.switchForMonthlyParking.isChecked) {
-                        viewModel.hourly = Rate(monthlyMin.toInt(), monthlySurcharge.toInt())
+                        viewModel.monthly = Rate(monthlyMin.toInt(), monthlySurcharge.toInt())
                     }
                     val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
                     viewPager.setCurrentItem(5, true)
