@@ -34,7 +34,7 @@
 
     //entry
     <string name="btn_for_register">등록하기</string>
-    <string name="btn_hourly_parking">시간\n주차</string>
+    <string name="btn_hourly_parking">시간주차</string>
     <string name="btn_monthly_parking">월주차</string>
     <string name="btn_notice">공지사항</string>
 
