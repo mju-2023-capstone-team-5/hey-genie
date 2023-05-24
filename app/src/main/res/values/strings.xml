@@ -70,6 +70,7 @@
     <string name="reservation_month_duration">대여 기간(월)</string>
     <string name="reservation_start_time">대여 시작 시간</string>
     <string name="reservation_time_duration">대여 시간(h)</string>
+    <string name="reservation_available_days">이용 가능 요일</string>
 
     //pay
     <string name="payment_info">예약 정보를 확인해주세요!:)</string>
