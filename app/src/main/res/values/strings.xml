@@ -23,6 +23,8 @@
     <string name="fragment_search">지도</string>
     <string name="fragment_reservation">예약하기</string>
     <string name="fragment_pay">결제하기</string>
+    <string name="fragment_my_parking_lot">주차장 관리</string>
+    <string name="fragment_my_reservation">예약 관리</string>
 
     //signUp
     <string name="sign_up_info">회원가입을 위한 추가정보를 \n입력해주세요! :)</string>
@@ -76,7 +78,7 @@
 
     //notice
     <string name="no_notice">공지사항이 없습니다!:)</string>
-    
+
     //register_step
     <string name="complete_info">등록이 진행 중입니다.</string>
     <string name="step_register">주차장 등록</string>
@@ -116,4 +118,5 @@
     <string name="register_btn_next">다음 단계</string>
     <string name="register_main_next">메인으로 가기</string>
     <string name="register_check_info">등록 정보 확인</string>
+
 </resources>

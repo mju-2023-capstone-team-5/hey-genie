@@ -31,16 +31,6 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_my_page"
-        android:name="org.sopar.presentation.mypage.MyPageFragment"
-        android:label="@string/fragment_my_page"
-        tools:layout="@layout/fragment_my_page" />
-    <fragment
-        android:id="@+id/fragment_setting"
-        android:name="org.sopar.presentation.setting.SettingFragment"
-        android:label="@string/fragment_setting"
-        tools:layout="@layout/fragment_setting" />
-    <fragment
         android:id="@+id/searchFragment"
         android:name="org.sopar.presentation.search.SearchFragment"
         android:label="@string/fragment_search"
@@ -89,4 +79,14 @@
             android:name="parkingLot"
             app:argType="org.sopar.data.remote.response.ParkingLot" />
     </fragment>
+    <fragment
+        android:id="@+id/fragment_my_parking_lot"
+        android:name="org.sopar.presentation.myParkingLot.MyParkingLot"
+        android:label="@string/fragment_my_parking_lot"
+        tools:layout="@layout/fragment_my_parking_lot" />
+    <fragment
+        android:id="@+id/fragment_my_reservation"
+        android:name="org.sopar.presentation.myReservation.MyReservation"
+        android:label="@string/fragment_my_reservation"
+        tools:layout="@layout/fragment_my_reservation" />
 </navigation>
