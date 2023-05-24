@@ -46,7 +46,7 @@ class RegisterViewModel @Inject constructor(
     var type: List<String>? = null
     var availableDay: List<String>? = null
     var availableTime: List<TimeSlot>? = null
-    val monthly: Rate? = null
+    var monthly: Rate? = null
     var hourly: Rate? = null
 
     var imageUrl: String? = null
