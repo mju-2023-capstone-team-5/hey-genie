@@ -7,11 +7,21 @@
     android:orientation="vertical"
     tools:context=".presentation.myParkingLot.MyParkingLot">
 
+        <TextView
+            android:id="@+id/text_no_registered_parking_lot"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="@string/no_registered_parkingLot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_parking_lot"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
 </LinearLayout>
