@@ -54,4 +54,9 @@ interface SoparRetrofitApi {
         @Path("id") id: Int
     ): Response<ParkingLot>
 
+    @GET("/api/v1/users/{id}/parking-lots")
+    suspend fun getParkingLotsByUser(
+        @Path("id") id: Int
+    ): Response<List<ParkingLot>>
+
 }

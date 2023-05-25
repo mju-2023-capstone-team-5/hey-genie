@@ -32,5 +32,9 @@ class ParkingLotRepositoryImpl @Inject constructor(
         return api.registerPermissionImage(id, file)
     }
 
+    override suspend fun getParkingLotByUser(id: Int): Response<List<ParkingLot>> {
+        return api.getParkingLotsByUser(id)
+    }
+
 
 }
