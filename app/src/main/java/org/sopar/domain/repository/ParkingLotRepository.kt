@@ -12,5 +12,7 @@ interface ParkingLotRepository {
 
     suspend fun registerPermissionImage(id: Int, file: List<MultipartBody.Part>): Response<String>
 
-    suspend fun getParkingLotByUser(id: Int): Response<List<ParkingLot>>
+    suspend fun getParkingLotByUser(id: Int): Response<List<ParkingLot>?>
+
+    suspend fun deleteParkingLotById(id: Int): Response<String>
 }
