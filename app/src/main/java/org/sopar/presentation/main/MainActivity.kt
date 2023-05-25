@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         navController = host.navController
 
         appBar = AppBarConfiguration(
-            setOf(R.id.fragment_map, R.id.fragment_my_page, R.id.fragment_setting),
+            setOf(R.id.fragment_map, R.id.fragment_my_parking_lot, R.id.fragment_my_reservation),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBar)

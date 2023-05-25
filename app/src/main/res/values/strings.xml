@@ -23,6 +23,8 @@
     <string name="fragment_search">지도</string>
     <string name="fragment_reservation">예약하기</string>
     <string name="fragment_pay">결제하기</string>
+    <string name="fragment_my_parking_lot">주차장 관리</string>
+    <string name="fragment_my_reservation">예약 관리</string>
 
     //signUp
     <string name="sign_up_info">회원가입을 위한 추가정보를 \n입력해주세요! :)</string>
@@ -43,6 +45,9 @@
     <string name="base_error">오류가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="sign_up_error">기본 정보를 채워주세요!🥲</string>
     <string name="permission_error">필요한 권한을 승인해주세요!</string>
+    <string name="get_parking_lot_error">주차장을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+    <string name="delete_parking_lot_error">주차장 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+
 
     //description
     <string name="btn_for_log_out">button_for_log_out</string>
@@ -76,7 +81,7 @@
 
     //notice
     <string name="no_notice">공지사항이 없습니다!:)</string>
-    
+
     //register_step
     <string name="complete_info">등록이 진행 중입니다.</string>
     <string name="step_register">주차장 등록</string>
@@ -116,4 +121,8 @@
     <string name="register_btn_next">다음 단계</string>
     <string name="register_main_next">메인으로 가기</string>
     <string name="register_check_info">등록 정보 확인</string>
+    
+    //my page
+    <string name="no_registered_parkingLot">등록한 주차장이 없습니다!🥲</string>
+
 </resources>

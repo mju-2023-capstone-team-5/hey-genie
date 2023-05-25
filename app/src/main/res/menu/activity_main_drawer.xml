@@ -9,13 +9,13 @@
             android:icon="@drawable/ic_nav_map"
             android:title="지도"/>
         <item
-            android:id="@+id/fragment_my_page"
-            android:icon="@drawable/ic_nav_my_page"
-            android:title="마이 페이지"/>
+            android:id="@+id/fragment_my_parking_lot"
+            android:icon="@drawable/ic_nav_parking_lot"
+            android:title="주차장 관리"/>
         <item
-            android:id="@+id/fragment_setting"
-            android:icon="@drawable/ic_nav_setting"
-            android:title="설정"/>
+            android:id="@+id/fragment_my_reservation"
+            android:icon="@drawable/ic_nav_reservation"
+            android:title="예약 관리"/>
     </group>
 
     <group
