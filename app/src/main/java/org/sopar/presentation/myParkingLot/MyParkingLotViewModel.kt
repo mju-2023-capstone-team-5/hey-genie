@@ -19,8 +19,8 @@ class MyParkingLotViewModel @Inject constructor(
     private val parkingLotRepository: ParkingLotRepository,
     private val authRepository: AuthRepository
 ): ViewModel() {
-    private val _parkingLots = MutableLiveData(listOf<ParkingLot>())
-    val parkingLots: LiveData<List<ParkingLot>> get() = _parkingLots
+    private val _parkingLots = MutableLiveData<List<ParkingLot>?>(listOf<ParkingLot>())
+    val parkingLots: LiveData<List<ParkingLot>?> get() = _parkingLots
     private val _getParkingLotStatus = MutableLiveData(NetworkState.LOADING)
     val getParkingLotStatus: LiveData<NetworkState> get() = _getParkingLotStatus
 
@@ -29,6 +29,7 @@ class MyParkingLotViewModel @Inject constructor(
             try {
                 val userId = authRepository.getUId().first()
                 val response = parkingLotRepository.getParkingLotByUser(userId)
+                Log.d("getParkingLotByUserId", response.body().toString())
                 _parkingLots.postValue(response.body())
             } catch (e: java.lang.Exception) {
                 Log.d("getParkingLotByUserId", e.toString())
