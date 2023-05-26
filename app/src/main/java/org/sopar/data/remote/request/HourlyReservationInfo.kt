@@ -11,10 +11,6 @@ import java.util.Date
 data class HourlyReservationInfo(
     @field:Json(name = "date")
     val date: Date,
-    @field:Json(name = "startHour")
-    val startHour: Int,
-    @field:Json(name = "startMinute")
-    val startMinute: Int,
     @field:Json(name = "duration")
-    val duration: Int
+    val duration: List<Int>
 ): Parcelable
