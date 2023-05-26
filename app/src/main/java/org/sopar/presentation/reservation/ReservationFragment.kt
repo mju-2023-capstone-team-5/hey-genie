@@ -351,11 +351,13 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                         price = parkingLot.value!!.hourly!!.surcharge * checkedTime.size
                         if (checkDay(date)) {
                             if (minimum <= price) {
-                                reservationViewModel.registerHourlyReservation(
-                                    parkingLot.value!!.id!!,
+                                val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(
+                                    parkingLot.value!!,
+                                    price,
                                     hourlyReservationInfo,
-                                    price
+                                    null
                                 )
+                                findNavController().navigate(action)
                             } else {
                                 Toast.makeText(requireContext(), "최소 금액을 채워주세요!🙏", Toast.LENGTH_SHORT)
                                     .show()
@@ -376,11 +378,13 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                         price = parkingLot.value!!.monthly!!.surcharge * duration
                         if (checkDay(date)) {
                             if (minimum <= price) {
-                                reservationViewModel.registerMonthlyReservation(
-                                    parkingLot.value!!.id!!,
-                                    monthlyReservationInfo,
-                                    price
+                                val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(
+                                    parkingLot.value!!,
+                                    price,
+                                    null,
+                                    monthlyReservationInfo
                                 )
+                                findNavController().navigate(action)
                             } else {
                                 Toast.makeText(requireContext(), "최소 금액을 채워주세요!🙏", Toast.LENGTH_SHORT)
                                     .show()

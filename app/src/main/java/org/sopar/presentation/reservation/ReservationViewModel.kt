@@ -16,13 +16,15 @@ import org.sopar.data.remote.response.ParkingLot
 import org.sopar.domain.entity.NetworkState
 import org.sopar.domain.repository.AuthRepository
 import org.sopar.domain.repository.MapRepository
+import org.sopar.domain.repository.ParkingLotRepository
 import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class ReservationViewModel @Inject constructor(
     private val mapRepository: MapRepository,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val parkingLotRepository: ParkingLotRepository
 ): ViewModel() {
     private val _getParkingLotState = MutableLiveData(NetworkState.LOADING)
     val getParkingLotState: LiveData<NetworkState> = _getParkingLotState
@@ -60,8 +62,9 @@ class ReservationViewModel @Inject constructor(
                 val userId = authRepository.getUId().first()
                 val reservation = Reservation(null, userId, parkingLotId, null, hourlyReservationInfo, price)
                 Log.d("registerHourlyReservation", reservation.toString())
+                val response = parkingLotRepository.registerReservation(reservation)
             } catch (e: java.lang.Exception) {
-                Log.d("registerHoutlyReservation error", e.toString())
+                Log.d("registerHourlyReservation error", e.toString())
                 _reservationStatus.postValue(NetworkState.FAIL)
             }
         }
@@ -73,6 +76,7 @@ class ReservationViewModel @Inject constructor(
                 val userId = authRepository.getUId().first()
                 val reservation = Reservation(null, userId, parkingLotId, monthlyReservationInfo, null, price)
                 Log.d("registerMonthlyReservation", reservation.toString())
+
             } catch (e: java.lang.Exception) {
                 Log.d("registerMonthlyReservation error", e.toString())
                 _reservationStatus.postValue(NetworkState.FAIL)
