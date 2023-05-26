@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Reservation(
     @field:Json(name = "reservationId")
-    val reservationId: Int,
+    val reservationId: Int?,
     @field:Json(name = "userId")
     val userId: Int,
     @field:Json(name = "parkingLotId")
