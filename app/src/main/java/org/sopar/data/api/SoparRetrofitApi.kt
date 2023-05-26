@@ -3,6 +3,7 @@ package org.sopar.data.api
 import okhttp3.MultipartBody
 import org.sopar.data.remote.request.LoginRequest
 import org.sopar.data.remote.request.ParkingLotRequest
+import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.*
 import org.sopar.data.remote.response.LoginResponse
@@ -53,5 +54,10 @@ interface SoparRetrofitApi {
     suspend fun getParkingLotsById(
         @Path("id") id: Int
     ): Response<ParkingLot>
+
+    @POST("/api/v1/reservation")
+    suspend fun registerReservation(
+        @Body reservation: Reservation
+    ): Response<Reservation>
 
 }
