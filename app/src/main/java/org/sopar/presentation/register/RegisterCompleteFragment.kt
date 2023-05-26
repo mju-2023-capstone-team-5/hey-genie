@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
 import org.sopar.databinding.FragmentRegisterCompleteBinding
 import org.sopar.presentation.base.BaseFragment
+import org.sopar.presentation.entry.EntryActivity
 import org.sopar.presentation.main.MainActivity
 
 @AndroidEntryPoint
@@ -39,7 +40,7 @@ class RegisterCompleteFragment : BaseFragment<FragmentRegisterCompleteBinding>(R
         }
 
         binding.btnMain.setOnClickListener {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, EntryActivity::class.java)
             startActivity(intent)
         }
     }
