@@ -37,7 +37,7 @@ class RegisterParkingLotImageFragment: BaseFragment<FragmentRegisterParkingLotIm
     private fun setListener() {
 
         binding.imageParkingLot.setOnClickListener {
-            if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
                 requestGalleryLauncher.launch(REQUIRED_GALLERY_PERMISSION)
             } else {
                 requestGalleryLauncher.launch(REQUIRED_EXTERNAL_STORAGE)
@@ -45,7 +45,7 @@ class RegisterParkingLotImageFragment: BaseFragment<FragmentRegisterParkingLotIm
         }
 
         binding.imageGallery.setOnClickListener {
-            if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT> Build.VERSION_CODES.Q) {
                 requestGalleryLauncher.launch(REQUIRED_GALLERY_PERMISSION)
             } else {
                 requestGalleryLauncher.launch(REQUIRED_EXTERNAL_STORAGE)
