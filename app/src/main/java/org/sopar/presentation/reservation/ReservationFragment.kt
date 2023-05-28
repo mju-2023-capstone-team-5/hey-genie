@@ -373,7 +373,7 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                         val day = binding.monthlyDatePicker.dayOfMonth
                         val duration = binding.monthlyDurationPicker.value
                         val date = dateFormat.parse("${year}.${month}.${day}")!!
-                        val monthlyReservationInfo = MonthlyReservationInfo(date, duration)
+                        val monthlyReservationInfo = MonthlyReservationInfo(date, listOf(duration))
                         minimum = parkingLot.value!!.monthly!!.minimum
                         price = parkingLot.value!!.monthly!!.surcharge * duration
                         if (checkDay(date)) {

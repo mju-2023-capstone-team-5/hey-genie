@@ -23,8 +23,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ReservationViewModel @Inject constructor(
     private val mapRepository: MapRepository,
-    private val authRepository: AuthRepository,
-    private val parkingLotRepository: ParkingLotRepository
 ): ViewModel() {
     private val _getParkingLotState = MutableLiveData(NetworkState.LOADING)
     val getParkingLotState: LiveData<NetworkState> = _getParkingLotState
@@ -32,8 +30,6 @@ class ReservationViewModel @Inject constructor(
     val parkingLot: LiveData<ParkingLot> = _parkingLot
     private val _times = MutableLiveData<Set<Int>>(mutableSetOf())
     val times: LiveData<Set<Int>> get() = _times
-    private val _reservationStatus = MutableLiveData(NetworkState.LOADING)
-    val reservationStatus: LiveData<NetworkState> = _reservationStatus
 
     fun postTimes(times: MutableSet<Int>) {
         _times.postValue(times)
@@ -54,34 +50,6 @@ class ReservationViewModel @Inject constructor(
 
     fun setParkingLot(parkingLot: ParkingLot) {
         _parkingLot.postValue(parkingLot)
-    }
-
-    fun registerHourlyReservation(parkingLotId: Int, hourlyReservationInfo: HourlyReservationInfo, price: Int) {
-        viewModelScope.launch {
-            try {
-                val userId = authRepository.getUId().first()
-                val reservation = Reservation(null, userId, parkingLotId, null, hourlyReservationInfo, price)
-                Log.d("registerHourlyReservation", reservation.toString())
-                val response = parkingLotRepository.registerReservation(reservation)
-            } catch (e: java.lang.Exception) {
-                Log.d("registerHourlyReservation error", e.toString())
-                _reservationStatus.postValue(NetworkState.FAIL)
-            }
-        }
-    }
-
-    fun registerMonthlyReservation(parkingLotId: Int, monthlyReservationInfo: MonthlyReservationInfo, price: Int) {
-        viewModelScope.launch {
-            try {
-                val userId = authRepository.getUId().first()
-                val reservation = Reservation(null, userId, parkingLotId, monthlyReservationInfo, null, price)
-                Log.d("registerMonthlyReservation", reservation.toString())
-
-            } catch (e: java.lang.Exception) {
-                Log.d("registerMonthlyReservation error", e.toString())
-                _reservationStatus.postValue(NetworkState.FAIL)
-            }
-        }
     }
 
 }
