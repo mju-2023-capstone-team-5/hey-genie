@@ -12,5 +12,5 @@ data class MonthlyReservationInfo(
     @field:Json(name = "date")
     val date: Date,
     @field:Json(name = "duration")
-    val duration: Int,
+    val duration: List<Int>,
 ): Parcelable
