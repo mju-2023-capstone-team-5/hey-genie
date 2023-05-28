@@ -82,7 +82,7 @@ class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionIm
     private fun setListener() {
 
         binding.imageGallery.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
                 requestGalleryLauncher.launch(Constants.REQUIRED_GALLERY_PERMISSION)
             } else {
                 requestGalleryLauncher.launch(Constants.REQUIRED_EXTERNAL_STORAGE)
@@ -90,7 +90,7 @@ class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionIm
         }
 
         binding.imageDocument.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
                 requestGalleryLauncher.launch(Constants.REQUIRED_GALLERY_PERMISSION)
             } else {
                 requestGalleryLauncher.launch(Constants.REQUIRED_EXTERNAL_STORAGE)
