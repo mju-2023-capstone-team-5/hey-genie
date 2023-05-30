@@ -128,5 +128,6 @@
     
     //my page
     <string name="no_registered_parkingLot">등록한 주차장이 없습니다!🥲</string>
+    <string name="no_reservation">예약 내역이 없습니다!🥲</string>
 
 </resources>
