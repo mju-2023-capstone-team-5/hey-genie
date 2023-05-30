@@ -72,14 +72,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/reservation_parking_lot_address"
+                    android:text="@string/reservation_price"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:id="@+id/text_parking_lot_address"
+                    android:id="@+id/text_reservation_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
