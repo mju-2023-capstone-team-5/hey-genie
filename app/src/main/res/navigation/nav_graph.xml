@@ -143,5 +143,8 @@
         <argument
             android:name="reservationId"
             app:argType="integer" />
+        <argument
+            android:name="parkingLotName"
+            app:argType="string" />
     </fragment>
 </navigation>

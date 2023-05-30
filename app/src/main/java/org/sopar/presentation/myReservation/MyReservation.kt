@@ -56,16 +56,6 @@ class MyReservation : BaseFragment<FragmentMyReservationBinding>(R.layout.fragme
                 dialog.show(requireActivity().supportFragmentManager, "GetReservationErrorDialog")
             }
         }
-
-        myReservationViewModel.deleteReservationState.observe(viewLifecycleOwner) { state ->
-            if (state == NetworkState.FAIL) {
-                val dialog = BaseErrorDialog(R.string.delete_reservation_error)
-                dialog.show(requireActivity().supportFragmentManager, "DeleteReservationErrorDialog")
-            } else if (state == NetworkState.SUCCESS) {
-                Toast.makeText(context, "성공적으로 삭제되었습니다!🙌", Toast.LENGTH_SHORT).show()
-                init()
-            }
-        }
     }
 
     private fun init() {
@@ -74,7 +64,7 @@ class MyReservation : BaseFragment<FragmentMyReservationBinding>(R.layout.fragme
 
     private fun setRecyclerViewAdapter() {
         reservationAdapter.setOnItemClickListener { reservation ->
-            val action = MyReservationDirections.actionFragmentMyReservationToReservationDetail(reservation.reservationId)
+            val action = MyReservationDirections.actionFragmentMyReservationToReservationDetail(reservationId = reservation.reservationId, parkingLotName = reservation.parkingLotName)
             findNavController().navigate(action)
         }
 
