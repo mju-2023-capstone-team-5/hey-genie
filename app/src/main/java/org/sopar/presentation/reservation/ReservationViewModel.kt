@@ -7,16 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import org.sopar.data.remote.request.HourlyReservationInfo
-import org.sopar.data.remote.request.MonthlyReservationInfo
-import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.domain.entity.NetworkState
-import org.sopar.domain.repository.AuthRepository
 import org.sopar.domain.repository.MapRepository
-import org.sopar.domain.repository.ParkingLotRepository
 import java.io.IOException
 import javax.inject.Inject
 

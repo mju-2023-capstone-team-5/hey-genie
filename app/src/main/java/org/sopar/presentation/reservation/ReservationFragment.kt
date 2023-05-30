@@ -6,23 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopar.R
-import org.sopar.data.remote.request.HourlyReservationInfo
-import org.sopar.data.remote.request.MonthlyReservationInfo
-import org.sopar.data.remote.request.Reservation
+import org.sopar.data.remote.request.*
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.databinding.FragmentReservationBinding
 import org.sopar.domain.entity.NetworkState
 import org.sopar.presentation.base.BaseErrorDialog
 import org.sopar.presentation.base.BaseFragment
-import org.sopar.presentation.notice.NoticeDialog
-import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.stream.IntStream.range
 
@@ -74,9 +71,17 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         }
 
         reservationViewModel.times.observe(viewLifecycleOwner) { times ->
-            if (checkAvailable(times.toList())) {
-                price = (reservationViewModel.parkingLot.value?.hourly?.surcharge ?: 0) * (times.size)
-                binding.btnReservationComplete.text = "${price}원 결제하기"
+            if (times.isNotEmpty()) {
+                if (args.isHourly) {
+                    if (checkAvailable(times.toList())) {
+                        price = (reservationViewModel.parkingLot.value?.hourly?.surcharge ?: 0) * (times.size)
+                        binding.btnReservationComplete.text = "${price}원 결제하기"
+                    }
+                } else {
+                    price = (reservationViewModel.parkingLot.value?.monthly?.surcharge ?: 0) * (times.toList()[0])
+                    binding.btnReservationComplete.text = "${price}원 결제하기"
+                }
+
             }
         }
     }
@@ -339,23 +344,35 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
             val minimum: Int
             if (times.isNotEmpty()) {
                 if (checkAvailable(checkedTime.toList())) {
-                    val startTime = times[0]
+                    val startTime = if (times[0] < 10) {
+                        "0"+times[0]
+                    } else {
+                        times[0]
+                    }
                     if (args.isHourly) {
-                        val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.getDefault())
+                        val format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         val year = binding.hourlyDatePicker.year
-                        val month = binding.hourlyDatePicker.month
-                        val day = binding.hourlyDatePicker.dayOfMonth
-                        val date = dateFormat.parse("${year}.${month}.${day} ${startTime}:00:00")!!
-                        val hourlyReservationInfo = HourlyReservationInfo(date, times)
+                        val month = if (binding.hourlyDatePicker.month < 10) {
+                            "0"+binding.hourlyDatePicker.month.toString()
+                        } else {
+                            binding.hourlyDatePicker.month.toString()
+                        }
+                        val day = if (binding.hourlyDatePicker.dayOfMonth < 10) {
+                            "0" + binding.hourlyDatePicker.dayOfMonth
+                        } else {
+                            binding.hourlyDatePicker.dayOfMonth
+                        }
+                        val date = LocalDateTime.parse("${year}-${month}-${day} ${startTime}:00:00", format)
+                        val hourlyReservationInfo = HourlyReservation(date.toString(), times)
                         minimum = parkingLot.value!!.hourly!!.minimum
                         price = parkingLot.value!!.hourly!!.surcharge * checkedTime.size
                         if (checkDay(date)) {
                             if (minimum <= price) {
                                 val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(
                                     parkingLot.value!!,
-                                    price,
                                     hourlyReservationInfo,
-                                    null
+                                    null,
+                                    price
                                 )
                                 findNavController().navigate(action)
                             } else {
@@ -367,22 +384,30 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                                 .show()
                         }
                     } else {
-                        val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
+                        val format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         val year = binding.monthlyDatePicker.year
-                        val month = binding.monthlyDatePicker.month
-                        val day = binding.monthlyDatePicker.dayOfMonth
+                        val month = if (binding.monthlyDatePicker.month < 10) {
+                            "0"+binding.monthlyDatePicker.month.toString()
+                        } else {
+                            binding.monthlyDatePicker.month.toString()
+                        }
+                        val day = if (binding.monthlyDatePicker.dayOfMonth < 10) {
+                            "0" + binding.monthlyDatePicker.dayOfMonth
+                        } else {
+                            binding.monthlyDatePicker.dayOfMonth
+                        }
                         val duration = binding.monthlyDurationPicker.value
-                        val date = dateFormat.parse("${year}.${month}.${day}")!!
-                        val monthlyReservationInfo = MonthlyReservationInfo(date, listOf(duration))
+                        val date = LocalDateTime.parse("${year}-${month}-${day} 00:00:00", format)
+                        val monthlyReservationInfo = MonthlyReservation(date.toString(), listOf(duration))
                         minimum = parkingLot.value!!.monthly!!.minimum
                         price = parkingLot.value!!.monthly!!.surcharge * duration
                         if (checkDay(date)) {
                             if (minimum <= price) {
                                 val action = ReservationFragmentDirections.actionReservationFragmentToPayFragment(
                                     parkingLot.value!!,
-                                    price,
                                     null,
-                                    monthlyReservationInfo
+                                    monthlyReservationInfo,
+                                    price
                                 )
                                 findNavController().navigate(action)
                             } else {
@@ -409,25 +434,27 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         }
     }
 
-    private fun checkDay(date: Date): Boolean {
+    private fun checkDay(date: LocalDateTime): Boolean {
         val availableDays = reservationViewModel.parkingLot.value!!.availableDay
         val cal = Calendar.getInstance()
-        cal.time = date
+//        cal.time = date
+        cal.set(date.year, date.monthValue, date.dayOfMonth)
+        Log.d("cal time", cal.time.toString())
         val day = cal.get(Calendar.DAY_OF_WEEK)
         Log.d("day", day.toString())
-        if ((day == 6) and ("일" in availableDays)) {
+        if ((day == 1) and ("일" in availableDays)) {
             return true
-        } else if ((day == 7) and ("월" in availableDays)) {
+        } else if ((day == 2) and ("월" in availableDays)) {
             return true
-        } else if ((day == 1) and ("화" in availableDays)) {
+        } else if ((day == 3) and ("화" in availableDays)) {
             return true
-        } else if ((day == 2) and ("수" in availableDays)) {
+        } else if ((day == 4) and ("수" in availableDays)) {
             return true
-        } else if ((day == 3) and ("목" in availableDays)) {
+        } else if ((day == 5) and ("목" in availableDays)) {
             return true
-        } else if ((day == 4) and ("금" in availableDays)) {
+        } else if ((day == 6) and ("금" in availableDays)) {
             return true
-        } else if ((day == 5) and ("토" in availableDays)) {
+        } else if ((day == 7) and ("토" in availableDays)) {
             return true
         }
         return false
