@@ -18,9 +18,40 @@
         android:background="@drawable/image_round_shape"
         android:src="@drawable/icon_parking_lot"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/parking_lot_Rating"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/text_name"/>
+
+    <RatingBar
+        android:id="@+id/parking_lot_Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CustomRatingBarStyle"
+        android:numStars="5"
+        android:stepSize="0.1"
+        android:isIndicator="true"
+        android:layout_marginTop="5dp"
+        android:progressBackgroundTint="@color/base_blue"
+        android:progressTint="@color/base_blue"
+        app:layout_constraintRight_toLeftOf="@id/parking_lot_comment"
+        app:layout_constraintTop_toBottomOf="@id/image_parking_lot"
+        app:layout_constraintLeft_toLeftOf="@id/image_parking_lot"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/parking_lot_comment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/parking_lot_no_comment"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/parking_lot_Rating"
+        app:layout_constraintBottom_toBottomOf="@id/parking_lot_Rating"
+        app:layout_constraintLeft_toRightOf="@id/parking_lot_Rating"
+        android:textStyle="bold"
+        android:textSize="12sp"/>
 
     <TextView
         android:id="@+id/text_name"
@@ -43,7 +74,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="@id/text_name"
         app:layout_constraintTop_toBottomOf="@id/text_name"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@id/image_parking_lot"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
