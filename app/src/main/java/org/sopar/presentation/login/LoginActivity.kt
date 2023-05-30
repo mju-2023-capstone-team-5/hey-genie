@@ -2,6 +2,7 @@ package org.sopar.presentation.login
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateInterpolator
@@ -48,19 +49,22 @@ class LoginActivity: AppCompatActivity() {
             }
         }
 
-        this.splashScreen.setOnExitAnimationListener { splashScreenView ->
-            val slideUp = ObjectAnimator.ofFloat(
-                splashScreenView,
-                View.TRANSLATION_Y,
-                0f,
-                -splashScreenView.height.toFloat()
-            )
-            slideUp.interpolator = AnticipateInterpolator()
-            slideUp.duration = 200L
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+            this.splashScreen.setOnExitAnimationListener { splashScreenView ->
+                val slideUp = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.TRANSLATION_Y,
+                    0f,
+                    -splashScreenView.height.toFloat()
+                )
+                slideUp.interpolator = AnticipateInterpolator()
+                slideUp.duration = 200L
 
-            slideUp.doOnEnd { splashScreenView.remove() }
-            slideUp.start()
+                slideUp.doOnEnd { splashScreenView.remove() }
+                slideUp.start()
+            }
         }
+
     }
 
     private fun setObserver() {
