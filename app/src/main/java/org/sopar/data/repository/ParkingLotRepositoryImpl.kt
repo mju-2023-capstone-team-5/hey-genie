@@ -54,4 +54,8 @@ class ParkingLotRepositoryImpl @Inject constructor(
         return api.deleteReservationById(id)
     }
 
+    override suspend fun getReservationById(id: Int): Response<Reservation> {
+        return api.getReservationById(id)
+    }
+
 }

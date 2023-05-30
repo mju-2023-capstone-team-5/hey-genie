@@ -80,4 +80,9 @@ interface SoparRetrofitApi {
         @Path("id") id: Int
     ): Response<String>
 
+    @GET("/api/v1/reservation/{id}")
+    suspend fun getReservationById(
+        @Path("id") id: Int
+    ):Response<Reservation>
+
 }
