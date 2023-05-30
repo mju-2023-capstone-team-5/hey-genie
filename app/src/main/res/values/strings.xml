@@ -49,6 +49,7 @@
     <string name="permission_error">필요한 권한을 승인해주세요!</string>
     <string name="reservation_error">예약이 등록되지 않았습니다.\n 다시 시도해주세요!🥲</string>
     <string name="get_parking_lot_error">주차장을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+    <string name="get_reservation_error">예약을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="delete_parking_lot_error">주차장 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
 
     //description
