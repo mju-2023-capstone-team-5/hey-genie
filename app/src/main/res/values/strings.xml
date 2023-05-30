@@ -140,6 +140,7 @@
     <string name="parking_lot_comment">요약된 후기</string>
     <string name="parking_lot_comment_amount">후기 개수</string>
     <string name="parking_rating">주차장 평균 후기</string>
-    <string name="quote">"</string>
+    <string name="quote_start"> “</string>
+    <string name="quote_end"> ”</string>
 
 </resources>

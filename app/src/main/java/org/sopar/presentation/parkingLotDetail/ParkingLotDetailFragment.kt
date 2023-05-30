@@ -76,6 +76,12 @@ class ParkingLotDetailFragment : BaseFragment<FragmentParkingLotDetailBinding>(R
         parkingLot.monthly?.let {
             binding.textMonthly.text = "${it.minimum}원(최소) / ${it.surcharge}원(추가)"
         }
+
+        parkingLot.reviewSummary?.let {
+            binding.textParkingLotComment.text = it
+        }
+        binding.parkingLotRating.rating = parkingLot.ratingAvg!!.toFloat()
+        binding.textCommentAmount.text = parkingLot.ratingNum.toString()
     }
 
     private fun setDeleteBtnListener() {

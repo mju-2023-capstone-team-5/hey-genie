@@ -60,6 +60,12 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
             }
 
             binding.textDays.text = parkingLot.availableDay.joinToString(separator = ", ")
+
+            parkingLot.reviewSummary?.let {
+                binding.textParkingLotComment.text = it
+            }
+            binding.parkingLotRating.rating = parkingLot.ratingAvg!!.toFloat()
+            binding.textCommentAmount.text = parkingLot.ratingNum.toString()
         }
 
         reservationViewModel.getParkingLotState.observe(viewLifecycleOwner) { state ->
