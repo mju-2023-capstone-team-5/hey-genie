@@ -13,19 +13,19 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:text="@string/check_reservation_delete"
-        app:layout_constraintBottom_toTopOf="@id/btn_delete"
+        app:layout_constraintBottom_toTopOf="@id/btn_cancel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_delete"
+        android:id="@+id/btn_cancel"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:text="삭제"
+        android:text="취소"
         android:background="@drawable/base_white_round_shape"
         android:gravity="center"
         android:layout_marginTop="20dp"

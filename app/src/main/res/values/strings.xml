@@ -52,7 +52,7 @@
     <string name="get_reservation_error">예약을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="delete_reservation_error">예약 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="delete_parking_lot_error">주차장 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
-    <string name="check_reservation_delete">삭제한 내역은 되돌릴 수 없습니다.\n예약 내역을 삭제하시겠습니까?</string>
+    <string name="check_reservation_delete">취소한 내역은 되돌릴 수 없습니다.\n예약 내역을 취소하시겠습니까?</string>
 
     //description
     <string name="btn_for_log_out">button_for_log_out</string>
