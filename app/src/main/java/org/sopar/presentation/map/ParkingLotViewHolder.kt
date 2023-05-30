@@ -16,6 +16,10 @@ class ParkingLotViewHolder(
         item.imageUrl?.let {
             Glide.with(binding.root).load(item.imageUrl).into(binding.imageParkingLot)
         }
+        item.reviewSummary?.let {
+            binding.parkingLotComment.text = it
+        }
+        binding.parkingLotRating.rating = item.ratingAvg!!.toFloat()
     }
 
 }
