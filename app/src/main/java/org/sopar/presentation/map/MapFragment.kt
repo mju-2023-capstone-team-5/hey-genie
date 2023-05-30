@@ -198,7 +198,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
             mapPoint = point
             markerType = MapPOIItem.MarkerType.CustomImage
             //추후 평점 직접 등록
-            customImageResourceId = getImageByScore(5)
+            customImageResourceId = getImageByScore(parkingLot.ratingAvg!!.toFloat())
             setCustomImageAnchor(0.5f, 1.0f)
             showAnimationType = MapPOIItem.ShowAnimationType.SpringFromGround
             isDraggable = false
@@ -207,12 +207,15 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         mapView!!.addPOIItem(marker)
     }
 
-    private fun getImageByScore(score: Int): Int {
-        if (score > 4) {
-            return R.drawable.ic_sopar_logo
+    private fun getImageByScore(score: Float): Int {
+        return if (score > 4.5) {
+            R.drawable.icon_picker_great
+        } else if (score > 3) {
+            R.drawable.icon_picker_good
+        } else if (score == 0.0F) {
+            R.drawable.icon_picker_new
         } else {
-            //평점에 따라 추후 변경해야 함
-            return R.drawable.ic_sopar_logo
+            return R.drawable.icon_picker_bad
         }
     }
 
