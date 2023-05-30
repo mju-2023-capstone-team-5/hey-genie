@@ -43,11 +43,13 @@
     //dialog
     <string name="base_ok">확인</string>
     <string name="base_error">오류가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+    <string name="reservation_complete">예약이 등록되었습니다!🙂</string>
+    <string name="parkingLot_no_space">주차장이 꽉 찼습니다!\n 다른 곳을 이용해주세요!🙏</string>
     <string name="sign_up_error">기본 정보를 채워주세요!🥲</string>
     <string name="permission_error">필요한 권한을 승인해주세요!</string>
+    <string name="reservation_error">예약이 등록되지 않았습니다.\n 다시 시도해주세요!🥲</string>
     <string name="get_parking_lot_error">주차장을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="delete_parking_lot_error">주차장 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
-
 
     //description
     <string name="btn_for_log_out">button_for_log_out</string>
@@ -75,6 +77,8 @@
     <string name="reservation_month_duration">대여 기간(월)</string>
     <string name="reservation_start_time">대여 시작 시간</string>
     <string name="reservation_time_duration">대여 시간(h)</string>
+    <string name="reservation_available_days">이용 가능 요일</string>
+    <string name="reservation_available_time">🔵 파란 부분은 예약이 불가합니다!</string>
 
     //pay
     <string name="payment_info">예약 정보를 확인해주세요!:)</string>

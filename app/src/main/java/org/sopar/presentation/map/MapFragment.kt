@@ -150,10 +150,11 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
                     temp.add(item)
                 }
             } else {
-                temp.add(item)
+                if (item.monthly != null) {
+                    temp.add(item)
+                }
             }
         }
-
         return temp
     }
 

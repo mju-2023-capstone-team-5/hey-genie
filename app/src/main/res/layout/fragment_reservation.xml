@@ -124,6 +124,24 @@
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
                     android:textSize="17sp"/>
+
+                <TextView
+                    android:id="@+id/text_available_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_available_days"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
             </LinearLayout>
 
             <TextView
@@ -225,38 +243,78 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/reservation_start_time"
-                    android:layout_marginTop="10dp"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@string/register_step_time_setting"
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
-
-                <TimePicker
-                    android:id="@+id/time_picker"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/base_white_round_shape"
-                    android:layout_gravity="center_horizontal"
-                    android:timePickerMode="spinner"
-                    android:layout_height="100dp"
-                    android:layout_width="wrap_content"/>
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/reservation_start_time"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    android:layout_marginStart="20dp"
+                    android:text="@string/reservation_available_time"
+                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"/>
 
-                <NumberPicker
-                    android:id="@+id/time_duration_picker"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/base_white_round_shape"
-                    android:layout_gravity="center_horizontal"
-                    android:timePickerMode="spinner"
-                    android:layout_height="100dp"
-                    android:layout_width="wrap_content"/>
+                    android:padding="10dp">
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group1"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group2"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group3"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group4"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group5"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group6"
+                        layout="@layout/item_time_slot"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

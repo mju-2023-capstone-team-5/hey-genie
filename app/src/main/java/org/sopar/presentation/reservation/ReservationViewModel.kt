@@ -16,12 +16,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ReservationViewModel @Inject constructor(
-    private val mapRepository: MapRepository
+    private val mapRepository: MapRepository,
 ): ViewModel() {
     private val _getParkingLotState = MutableLiveData(NetworkState.LOADING)
     val getParkingLotState: LiveData<NetworkState> = _getParkingLotState
     private val _parkingLot = MutableLiveData<ParkingLot>()
     val parkingLot: LiveData<ParkingLot> = _parkingLot
+    private val _times = MutableLiveData<Set<Int>>(mutableSetOf())
+    val times: LiveData<Set<Int>> get() = _times
+
+    fun postTimes(times: MutableSet<Int>) {
+        _times.postValue(times)
+    }
+
 
     fun getParkingLotsById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {

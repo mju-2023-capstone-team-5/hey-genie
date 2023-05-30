@@ -73,11 +73,26 @@
         android:label="@string/fragment_pay"
         tools:layout="@layout/fragment_pay" >
         <argument
-            android:name="reservation"
-            app:argType="org.sopar.data.remote.request.Reservation" />
-        <argument
             android:name="parkingLot"
             app:argType="org.sopar.data.remote.response.ParkingLot" />
+        <argument
+            android:name="hourlyReservationInfo"
+            app:argType="org.sopar.data.remote.request.HourlyReservation"
+            app:nullable="true" />
+        <argument
+            android:name="monthlyReservationInfo"
+            app:argType="org.sopar.data.remote.request.MonthlyReservation"
+            app:nullable="true" />
+        <argument
+            android:name="price"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_payFragment_to_fragment_map"
+            app:destination="@id/fragment_map"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/fragment_my_parking_lot"
