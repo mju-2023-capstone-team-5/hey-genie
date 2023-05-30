@@ -87,14 +87,12 @@
             app:argType="org.sopar.data.remote.response.ParkingLot" />
         <argument
             android:name="hourlyReservationInfo"
-            app:argType="org.sopar.data.remote.request.HourlyReservationInfo"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:argType="org.sopar.data.remote.request.HourlyReservation"
+            app:nullable="true" />
         <argument
             android:name="monthlyReservationInfo"
-            app:argType="org.sopar.data.remote.request.MonthlyReservationInfo"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:argType="org.sopar.data.remote.request.MonthlyReservation"
+            app:nullable="true" />
         <argument
             android:name="price"
             app:argType="integer" />
