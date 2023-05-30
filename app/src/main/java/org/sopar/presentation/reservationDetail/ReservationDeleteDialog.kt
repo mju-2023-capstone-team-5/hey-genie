@@ -1,4 +1,4 @@
-package org.sopar.presentation.myReservation
+package org.sopar.presentation.reservationDetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import org.sopar.data.remote.response.Notice
 import org.sopar.databinding.DialogNoticeBinding
 import org.sopar.databinding.DialogReservationDeleteBinding
 import org.sopar.presentation.base.BaseDialog
+import org.sopar.presentation.reservationDetail.ReservationDetailViewModel
 
-class ReservationDeleteDialog(private val myReservationViewModel: MyReservationViewModel, private val reservationId: Int): BaseDialog<DialogReservationDeleteBinding>(R.layout.dialog_reservation_delete){
+class ReservationDeleteDialog(private val reservationDetailViewModel: ReservationDetailViewModel, private val reservationId: Int): BaseDialog<DialogReservationDeleteBinding>(R.layout.dialog_reservation_delete){
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,8 +20,9 @@ class ReservationDeleteDialog(private val myReservationViewModel: MyReservationV
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        binding.btnDelete.setOnClickListener {
-            myReservationViewModel.deleteReservationById(reservationId)
+        binding.btnCancel.setOnClickListener {
+            reservationDetailViewModel.deleteReservationById(reservationId)
+            dismiss()
         }
 
         return binding.root
