@@ -111,7 +111,15 @@
         android:id="@+id/fragment_my_reservation"
         android:name="org.sopar.presentation.myReservation.MyReservation"
         android:label="@string/fragment_my_reservation"
-        tools:layout="@layout/fragment_my_reservation" />
+        tools:layout="@layout/fragment_my_reservation" >
+        <action
+            android:id="@+id/action_fragment_my_reservation_to_reservationDetail"
+            app:destination="@id/reservationDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/parkingLotDetailFragment"
         android:name="org.sopar.presentation.parkingLotDetail.ParkingLotDetailFragment"
@@ -127,5 +135,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservationDetail"
+        android:name="org.sopar.presentation.reservationDetail.ReservationDetail"
+        android:label="@string/fragment_my_reservation">
+        <argument
+            android:name="reservationId"
+            app:argType="integer" />
     </fragment>
 </navigation>
