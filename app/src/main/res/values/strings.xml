@@ -49,7 +49,10 @@
     <string name="permission_error">필요한 권한을 승인해주세요!</string>
     <string name="reservation_error">예약이 등록되지 않았습니다.\n 다시 시도해주세요!🥲</string>
     <string name="get_parking_lot_error">주차장을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+    <string name="get_reservation_error">예약을 가져오는 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+    <string name="delete_reservation_error">예약 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
     <string name="delete_parking_lot_error">주차장 삭제 과정에서 에러가 발생했습니다!\n 다시 시도해주세요!🥲</string>
+    <string name="check_reservation_delete">취소한 내역은 되돌릴 수 없습니다.\n예약 내역을 취소하시겠습니까?</string>
 
     //description
     <string name="btn_for_log_out">button_for_log_out</string>
@@ -70,6 +73,7 @@
     <string name="reservation_parking_lot_info">주차장 정보</string>
     <string name="reservation_parking_lot_name">주차장 이름</string>
     <string name="reservation_parking_lot_address">주차장 주소</string>
+    <string name="reservation_price">결제 요금</string>
     <string name="reservation_date">이용 날짜</string>
     <string name="reservation_min_cost">최소 요금</string>
     <string name="reservation_monthly_surcharge">추가 요금(월)</string>
@@ -125,8 +129,10 @@
     <string name="register_btn_next">다음 단계</string>
     <string name="register_main_next">메인으로 가기</string>
     <string name="register_check_info">등록 정보 확인</string>
-    
+
     //my page
     <string name="no_registered_parkingLot">등록한 주차장이 없습니다!🥲</string>
+    <string name="no_reservation">예약 내역이 없습니다!🥲</string>
+    <string name="reservation_detail">예약 내역</string>
 
 </resources>

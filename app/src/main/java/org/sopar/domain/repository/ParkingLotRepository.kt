@@ -4,6 +4,7 @@ import okhttp3.MultipartBody
 import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
+import org.sopar.data.remote.response.ReservationPreview
 import retrofit2.Response
 
 interface ParkingLotRepository {
@@ -18,4 +19,10 @@ interface ParkingLotRepository {
     suspend fun getParkingLotByUser(id: Int): Response<List<ParkingLot>?>
 
     suspend fun deleteParkingLotById(id: Int): Response<String>
+
+    suspend fun getReservationByUser(id: Int): Response<List<ReservationPreview>>
+
+    suspend fun deleteReservationById(id: Int): Response<String>
+
+    suspend fun getReservationById(id: Int): Response<Reservation>
 }
