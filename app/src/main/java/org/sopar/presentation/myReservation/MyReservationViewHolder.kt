@@ -11,6 +11,7 @@ class MyReservationViewHolder(
 ): BaseViewHolder<ReservationPreview>(binding.root){
 
     override fun bind(item: ReservationPreview) {
+        binding.textName.text = item.parkingLotName
         val startTime = LocalDateTime.parse(item.startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"))
         binding.textStartTime.text = startTime.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분"))
         val endTime = LocalDateTime.parse(item.endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"))
