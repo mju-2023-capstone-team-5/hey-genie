@@ -21,4 +21,6 @@ interface ParkingLotRepository {
     suspend fun deleteParkingLotById(id: Int): Response<String>
 
     suspend fun getReservationByUser(id: Int): Response<List<ReservationPreview>>
+
+    suspend fun deleteReservationById(id: Int): Response<String>
 }

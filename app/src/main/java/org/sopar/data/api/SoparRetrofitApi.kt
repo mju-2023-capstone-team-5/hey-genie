@@ -75,4 +75,9 @@ interface SoparRetrofitApi {
         @Path("id") id: Int
     ): Response<List<ReservationPreview>>
 
+    @DELETE("/api/v1/reservation/{id}")
+    suspend fun deleteReservationById(
+        @Path("id") id: Int
+    ): Response<String>
+
 }
