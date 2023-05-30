@@ -8,7 +8,7 @@
     tools:context=".presentation.myParkingLot.MyParkingLot">
 
     <TextView
-        android:id="@+id/text_no_reservationt"
+        android:id="@+id/text_no_reservation"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="18sp"
