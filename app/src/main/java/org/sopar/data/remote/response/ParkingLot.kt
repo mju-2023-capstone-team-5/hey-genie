@@ -44,5 +44,7 @@ data class ParkingLot(
     @field:Json(name = "totalSpace")
     val totalSpace: Int,
     @field:Json(name = "type")
-    val type: List<String>
+    val type: List<String>,
+    @field:Json(name = "reviewSummary")
+    val reviewSummary: String?
 ): Parcelable
