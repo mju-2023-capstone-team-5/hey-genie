@@ -89,6 +89,7 @@
                         style="@style/CustomLargeRatingBarStyle"
                         android:numStars="5"
                         android:stepSize="0.1"
+                        android:isIndicator="true"
                         android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"/>
@@ -116,7 +117,7 @@
                             android:layout_marginEnd="15dp"
                             android:textStyle="bold"
                             android:layout_gravity="center_horizontal"
-                            android:text="아직 후기가 없습니다!🥲"
+                            android:text="@string/parking_lot_no_comment"
                             android:textSize="15sp"/>
 
                         <TextView
