@@ -48,7 +48,7 @@ class SignUpActivity: AppCompatActivity() {
             val phone = binding.edtTextSignUpPhoneNumber.text.toString()
             val carNumber = binding.edtTextSignUpCarNumber.text.toString()
 
-            if (name.isBlank() || address.isBlank() || phone.isBlank() || carNumber.isBlank()) {
+            if (name.isNullOrEmpty() || address.isNullOrEmpty() || phone.isNullOrEmpty() || carNumber.isNullOrEmpty()) {
                 val dialog = BaseErrorDialog(R.string.sign_up_error)
                 dialog.show(supportFragmentManager, "BaseErrorDialog")
             } else {
