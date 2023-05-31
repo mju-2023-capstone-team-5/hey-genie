@@ -1,6 +1,7 @@
 package org.sopar.domain.repository
 
 import okhttp3.MultipartBody
+import org.sopar.data.remote.request.Grade
 import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
@@ -25,4 +26,6 @@ interface ParkingLotRepository {
     suspend fun deleteReservationById(id: Int): Response<String>
 
     suspend fun getReservationById(id: Int): Response<Reservation>
+
+    suspend fun registerParkingLotGrade(grade: Grade): Response<Grade>
 }

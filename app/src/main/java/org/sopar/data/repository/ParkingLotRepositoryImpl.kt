@@ -2,6 +2,7 @@ package org.sopar.data.repository
 
 import okhttp3.MultipartBody
 import org.sopar.data.api.SoparRetrofitApi
+import org.sopar.data.remote.request.Grade
 import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
@@ -56,6 +57,10 @@ class ParkingLotRepositoryImpl @Inject constructor(
 
     override suspend fun getReservationById(id: Int): Response<Reservation> {
         return api.getReservationById(id)
+    }
+
+    override suspend fun registerParkingLotGrade(grade: Grade): Response<Grade> {
+        return api.registerParkingLotGrade(grade)
     }
 
 }
