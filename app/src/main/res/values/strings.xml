@@ -15,6 +15,7 @@
     <string name="register_hourly_surcharge_hint">시간 추가 요금을 입력해주세요.</string>
     <string name="register_contact_info_hint">\'-\'를 제외하고 입력해주세요.</string>
     <string name="register_caution_hint">주의사항을 입력해주세요.</string>
+    <string name="reservation_comment">후기를 남겨주세요.</string>
 
     //navigation
     <string name="fragment_map">지도</string>

@@ -11,4 +11,10 @@
         <item name="android:minHeight">30dip</item>
         <item name="android:maxHeight">50dip</item>
     </style>
+
+    <style name="CustomCommentRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/selector_custom_comment_rating</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">50dip</item>
+    </style>
 </resources>
