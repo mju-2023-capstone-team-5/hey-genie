@@ -24,11 +24,22 @@ class MyReservationAdapter: ListAdapter<ReservationPreview, MyReservationViewHol
                 onItemClickListener?.let { it(reservation) }
             }
         }
+
+        holder.itemView.findViewById<AppCompatButton>(R.id.btn_reservation_comment).setOnClickListener {
+            onCommentBtnClickListener.let {
+                onCommentBtnClickListener?.let { it(reservation) }
+            }
+        }
     }
 
     private var onItemClickListener: ((ReservationPreview) -> Unit)? = null
     fun setOnItemClickListener(listener: (ReservationPreview) -> Unit) {
         onItemClickListener = listener
+    }
+
+    private var onCommentBtnClickListener: ((ReservationPreview) -> Unit)? = null
+    fun setOnCommentBtnClickListener(listener: (ReservationPreview) -> Unit) {
+        onCommentBtnClickListener = listener
     }
 
     override fun getItemCount() = currentList.size
