@@ -12,5 +12,7 @@ data class ReservationPreview(
     @field:Json(name = "reservationId")
     val reservationId: Int,
     @field:Json(name = "startTime")
-    val startTime: String
+    val startTime: String,
+    @field:Json(name = "reviewWritten")
+    val reviewWritten: Boolean?
 )
