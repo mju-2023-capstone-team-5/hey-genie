@@ -29,7 +29,7 @@ class PayViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val userId = authRepository.getUId().first()
-                val reservation = Reservation(hourlyReservationInfo, null, parkingLotId, price, userId)
+                val reservation = Reservation(hourlyReservationInfo, null, false, parkingLotId, price, userId)
                 val response = parkingLotRepository.registerReservation(reservation)
                 Log.d("registerHourlyReservation request", reservation.toString())
                 if (response.code() == 200) {
@@ -53,7 +53,7 @@ class PayViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val userId = authRepository.getUId().first()
-                val reservation = Reservation(null, monthlyReservationInfo, parkingLotId, price, userId)
+                val reservation = Reservation(null, monthlyReservationInfo, false, parkingLotId, price, userId)
                 val response = parkingLotRepository.registerReservation(reservation)
                 Log.d("registerHourlyReservation request", reservation.toString())
                 if (response.code() == 200) {

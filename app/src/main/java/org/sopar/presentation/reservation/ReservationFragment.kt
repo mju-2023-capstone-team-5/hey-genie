@@ -359,9 +359,9 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                         val format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         val year = binding.hourlyDatePicker.year
                         val month = if (binding.hourlyDatePicker.month < 10) {
-                            "0"+binding.hourlyDatePicker.month.toString()
+                            "0"+((binding.hourlyDatePicker.month+1).toString())
                         } else {
-                            binding.hourlyDatePicker.month.toString()
+                            (binding.hourlyDatePicker.month+1).toString()
                         }
                         val day = if (binding.hourlyDatePicker.dayOfMonth < 10) {
                             "0" + binding.hourlyDatePicker.dayOfMonth

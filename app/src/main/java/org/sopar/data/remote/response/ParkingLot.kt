@@ -36,7 +36,7 @@ data class ParkingLot(
     @field:Json(name = "phoneNumber")
     val phoneNumber: String,
     @field:Json(name = "ratingAvg")
-    val ratingAvg: Int?,
+    val ratingAvg: Float?,
     @field:Json(name = "ratingNum")
     val ratingNum: Int?,
     @field:Json(name = "remainingSpace")

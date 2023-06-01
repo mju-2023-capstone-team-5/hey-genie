@@ -13,6 +13,8 @@ data class Reservation(
     val hourlyReservation: HourlyReservation?,
     @field:Json(name = "monthlyReservation")
     val monthlyReservation: MonthlyReservation?,
+    @field:Json(name = "isReviewWritten")
+    val isReviewWritten: Boolean,
     @field:Json(name = "parkingLotId")
     val parkingLotId: Int,
     @field:Json(name = "price")
