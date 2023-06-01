@@ -6,6 +6,7 @@ import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.ReservationPreview
+import org.sopar.data.remote.response.UserInfo
 import org.sopar.domain.repository.ParkingLotRepository
 import retrofit2.Response
 import javax.inject.Inject
@@ -56,6 +57,10 @@ class ParkingLotRepositoryImpl @Inject constructor(
 
     override suspend fun getReservationById(id: Int): Response<Reservation> {
         return api.getReservationById(id)
+    }
+
+    override suspend fun getUserInfoById(id: Int): Response<UserInfo> {
+        return api.getUserInfoById(id)
     }
 
 }
