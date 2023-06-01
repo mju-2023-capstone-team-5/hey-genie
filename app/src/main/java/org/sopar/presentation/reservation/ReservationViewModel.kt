@@ -8,15 +8,18 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.sopar.data.remote.request.Grade
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.domain.entity.NetworkState
 import org.sopar.domain.repository.MapRepository
+import org.sopar.domain.repository.ParkingLotRepository
 import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class ReservationViewModel @Inject constructor(
     private val mapRepository: MapRepository,
+    private val parkingLotRepository: ParkingLotRepository
 ): ViewModel() {
     private val _getParkingLotState = MutableLiveData(NetworkState.LOADING)
     val getParkingLotState: LiveData<NetworkState> = _getParkingLotState
@@ -24,6 +27,10 @@ class ReservationViewModel @Inject constructor(
     val parkingLot: LiveData<ParkingLot> = _parkingLot
     private val _times = MutableLiveData<Set<Int>>(mutableSetOf())
     val times: LiveData<Set<Int>> get() = _times
+    private val _commentList = MutableLiveData<List<Grade?>>()
+    val commentList: LiveData<List<Grade?>> get() = _commentList
+    private val _getCommentState = MutableLiveData(NetworkState.LOADING)
+    val getCommentState: LiveData<NetworkState> get() = _getCommentState
 
     fun postTimes(times: MutableSet<Int>) {
         _times.postValue(times)
@@ -44,6 +51,19 @@ class ReservationViewModel @Inject constructor(
 
     fun setParkingLot(parkingLot: ParkingLot) {
         _parkingLot.postValue(parkingLot)
+    }
+
+    fun getCommentByPKId(parkingLotId: Int) {
+        viewModelScope.launch {
+            try {
+                val response = parkingLotRepository.getCommentByPKId(parkingLotId)
+                Log.d("getCommentByPKId", response.body().toString())
+                _commentList.postValue(response.body())
+            } catch (e: java.lang.Exception) {
+                Log.d("getCommentByPKId Error", e.toString())
+                _getCommentState.postValue(NetworkState.FAIL)
+            }
+        }
     }
 
 }
