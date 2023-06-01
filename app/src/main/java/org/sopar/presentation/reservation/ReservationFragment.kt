@@ -386,6 +386,7 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
                                     .show()
                             }
                         } else {
+                            Log.d("date", date.toString())
                             Toast.makeText(requireContext(), "가능한 요일을 선택해주세요!🙏", Toast.LENGTH_SHORT)
                                 .show()
                         }
@@ -448,19 +449,19 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         Log.d("cal time", cal.time.toString())
         val day = cal.get(Calendar.DAY_OF_WEEK)
         Log.d("day", day.toString())
-        if ((day == 1) and ("일" in availableDays)) {
+        if ((day == 1) and ("금" in availableDays)) {
             return true
-        } else if ((day == 2) and ("월" in availableDays)) {
+        } else if ((day == 2) and ("토" in availableDays)) {
             return true
-        } else if ((day == 3) and ("화" in availableDays)) {
+        } else if ((day == 3) and ("일" in availableDays)) {
             return true
-        } else if ((day == 4) and ("수" in availableDays)) {
+        } else if ((day == 4) and ("월" in availableDays)) {
             return true
-        } else if ((day == 5) and ("목" in availableDays)) {
+        } else if ((day == 5) and ("화" in availableDays)) {
             return true
-        } else if ((day == 6) and ("금" in availableDays)) {
+        } else if ((day == 6) and ("수" in availableDays)) {
             return true
-        } else if ((day == 7) and ("토" in availableDays)) {
+        } else if ((day == 7) and ("목" in availableDays)) {
             return true
         }
         return false
@@ -773,5 +774,10 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         container: ViewGroup?
     ): FragmentReservationBinding {
         return FragmentReservationBinding.inflate(inflater, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.btnReservationComplete.text = "0원 결제하기"
     }
 }

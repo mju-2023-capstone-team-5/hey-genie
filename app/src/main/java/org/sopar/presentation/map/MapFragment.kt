@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -27,6 +28,7 @@ import org.sopar.databinding.FragmentMapBinding
 import org.sopar.domain.entity.NetworkState
 import org.sopar.presentation.base.BaseErrorDialog
 import org.sopar.presentation.base.BaseFragment
+import org.sopar.presentation.main.MainVIewModel
 import kotlin.math.log
 
 @AndroidEntryPoint
@@ -37,6 +39,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     private val mapViewModel by viewModels<MapViewModel>()
     private var mapView: MapView? = null
     private lateinit var customMapViewEventListener: MapViewEventListener
+    private val mainViewModel by activityViewModels<MainVIewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -272,6 +275,11 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
         container: ViewGroup?
     ): FragmentMapBinding {
         return FragmentMapBinding.inflate(inflater, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.getUserInfoById()
     }
 
     companion object {

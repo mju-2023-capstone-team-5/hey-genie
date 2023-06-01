@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,6 +17,7 @@ import org.sopar.databinding.FragmentReservationDetailBinding
 import org.sopar.domain.entity.NetworkState
 import org.sopar.presentation.base.BaseErrorDialog
 import org.sopar.presentation.base.BaseFragment
+import org.sopar.presentation.main.MainVIewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -23,6 +25,7 @@ import java.time.format.DateTimeFormatter
 class ReservationDetail : BaseFragment<FragmentReservationDetailBinding>(R.layout.fragment_reservation_detail) {
     private val reservationDetailViewModel by viewModels<ReservationDetailViewModel> ()
     private val args by navArgs<ReservationDetailArgs>()
+    private val mainViewModel by activityViewModels<MainVIewModel>()
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
@@ -79,6 +82,7 @@ class ReservationDetail : BaseFragment<FragmentReservationDetailBinding>(R.layou
                 val dialog = BaseErrorDialog(R.string.delete_reservation_error)
                 dialog.show(requireActivity().supportFragmentManager, "DeleteReservationErrorDialog")
             } else if (state == NetworkState.SUCCESS) {
+                mainViewModel.getUserInfoById()
                 Toast.makeText(context, "성공적으로 삭제되었습니다!🙌", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_reservationDetail_to_fragment_my_reservation)
             }
