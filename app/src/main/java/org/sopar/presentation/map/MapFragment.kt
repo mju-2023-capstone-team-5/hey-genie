@@ -212,9 +212,9 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     }
 
     private fun getImageByScore(score: Float): Int {
-        return if (score > 4.5) {
+        return if (score >= 4.0F) {
             R.drawable.icon_picker_great
-        } else if (score > 3) {
+        } else if (score >= 2.5F) {
             R.drawable.icon_picker_good
         } else if (score == 0.0F) {
             R.drawable.icon_picker_new
