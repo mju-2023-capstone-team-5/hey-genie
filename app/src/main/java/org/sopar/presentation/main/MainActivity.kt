@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var navController: NavController
     private lateinit var appBar: AppBarConfiguration
+    private val mainViewModel by viewModels<MainVIewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -94,6 +97,19 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    private fun setObserve() {
+        mainViewModel.userInfo.observe(this) {userInfo ->
+            binding.navView.getHeaderView(0).findViewById<TextView>(R.id.text_user_email).text = userInfo.email
+            binding.navView.getHeaderView(0).findViewById<TextView>(R.id.text_point).text = "${userInfo.points}p"
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setObserve()
+        mainViewModel.getUserInfoById()
     }
 
 }
