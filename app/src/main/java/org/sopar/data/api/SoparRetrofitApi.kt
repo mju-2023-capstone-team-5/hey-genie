@@ -85,4 +85,9 @@ interface SoparRetrofitApi {
         @Path("id") id: Int
     ):Response<Reservation>
 
+    @GET("/api/v1/users/{id}")
+    suspend fun getUserInfoById(
+        @Path("id") id: Int
+    ): Response<UserInfo>
+
 }
