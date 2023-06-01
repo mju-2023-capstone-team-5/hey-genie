@@ -82,9 +82,21 @@ interface SoparRetrofitApi {
         @Path("id") id: Int
     ):Response<Reservation>
 
+
     @POST("/api/v1/grade")
     suspend fun registerParkingLotGrade(
         @Body grade: Grade
     ): Response<Grade>
+
+    @GET("/api/v1/users/{id}")
+    suspend fun getUserInfoById(
+        @Path("id") id: Int
+    ): Response<UserInfo>
+
+    @POST("/api/v1/users/{id}/add-fcm-token")
+    suspend fun addFCMToken(
+        @Path("id") id: Int,
+        @Body fcmToken: FCMToken
+    ): Response<String>
 
 }

@@ -6,6 +6,7 @@ import org.sopar.data.remote.request.ParkingLotRequest
 import org.sopar.data.remote.request.Reservation
 import org.sopar.data.remote.response.ParkingLot
 import org.sopar.data.remote.response.ReservationPreview
+import org.sopar.data.remote.response.UserInfo
 import retrofit2.Response
 
 interface ParkingLotRepository {
@@ -28,4 +29,7 @@ interface ParkingLotRepository {
     suspend fun getReservationById(id: Int): Response<Reservation>
 
     suspend fun registerParkingLotGrade(grade: Grade): Response<Grade>
+
+    suspend fun getUserInfoById(id: Int): Response<UserInfo>
+
 }
