@@ -99,4 +99,9 @@ interface SoparRetrofitApi {
         @Body fcmToken: FCMToken
     ): Response<String>
 
+    @GET("/api/v1/grade/parking/{id}")
+    suspend fun getCommentByPKId(
+        @Path("id") id: Int
+    ): Response<List<Grade?>>
+
 }
