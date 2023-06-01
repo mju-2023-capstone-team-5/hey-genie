@@ -64,7 +64,7 @@ class MyReservation : BaseFragment<FragmentMyReservationBinding>(R.layout.fragme
 
         myReservationViewModel.registerGrade.observe(viewLifecycleOwner) { state ->
             if(state == NetworkState.SUCCESS) {
-                Toast.makeText(context, "소중한 후기가 등록되었습니다! 감사합니다!🙌", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "리뷰가 chat-gpt에 반영되었습니다!🙌", Toast.LENGTH_SHORT).show()
             } else if (state == NetworkState.FAIL) {
                 Toast.makeText(context, "후기 등록에 실패했습니다!\n다시 시도해주세요!", Toast.LENGTH_SHORT).show()
             }
@@ -99,6 +99,11 @@ class MyReservation : BaseFragment<FragmentMyReservationBinding>(R.layout.fragme
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = reservationAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        myReservationViewModel.postRegisterGradeLoading()
     }
 
 }

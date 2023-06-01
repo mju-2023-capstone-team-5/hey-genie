@@ -41,6 +41,7 @@ class CommentDialog(private val myReservationViewModel: MyReservationViewModel, 
             val comment = binding.textCommentContent.text.toString()
 
             if (! comment.isNullOrEmpty()) {
+                Toast.makeText(context, "소중한 리뷰가 등록 중입니다!🙌", Toast.LENGTH_SHORT).show()
                 myReservationViewModel.registerParkingLotGrade(reservationId, comment, rating)
                 dismiss()
             } else {
