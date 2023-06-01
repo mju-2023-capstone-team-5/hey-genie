@@ -33,6 +33,10 @@ class MyReservationViewModel @Inject() constructor(
     private val _reservation = MutableLiveData<Reservation>()
     val reservation: LiveData<Reservation> get() = _reservation
 
+    fun postRegisterGradeLoading() {
+        _registerGradeState.postValue(NetworkState.LOADING)
+    }
+
     fun getReservationByUser() {
         viewModelScope.launch {
             try {
@@ -54,7 +58,7 @@ class MyReservationViewModel @Inject() constructor(
                 val userId = authRepository.getUId().first()
                 val reservation = parkingLotRepository.getReservationById(reservationId).body()
                 reservation?.let {
-                    val grade = Grade(comment ?: null, reservation.parkingLotId, reservationId, rating, LocalDateTime.now().toString(), userId)
+                    val grade = Grade(comment = comment ?: null, parkingLotId = reservation.parkingLotId, reservationId = reservationId, rating = rating, timestamp = LocalDateTime.now().toString(), userId = userId)
                     Log.d("registerParkingLotGrade Request", grade.toString())
                     val response = parkingLotRepository.registerParkingLotGrade(grade)
                     Log.d("registerParkingLotGrade Response", response.toString())

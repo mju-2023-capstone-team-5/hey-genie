@@ -18,6 +18,7 @@ import org.sopar.data.api.SoparRetrofitApi
 import org.sopar.util.Constants.DATASTORE_NAME
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -37,6 +38,7 @@ object AppModule {
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
+            .connectTimeout(5, TimeUnit.SECONDS)
             .build()
     }
 
