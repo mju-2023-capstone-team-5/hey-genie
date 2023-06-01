@@ -11,7 +11,7 @@ data class Grade(
     @field:Json(name = "parkingLotId")
     val parkingLotId: Int,
     @field:Json(name = "reservationId")
-    val reservationId: Int,
+    val reservationId: Int?,
     @field:Json(name = "rating")
     val rating: Float,
     @field:Json(name = "timestamp")
