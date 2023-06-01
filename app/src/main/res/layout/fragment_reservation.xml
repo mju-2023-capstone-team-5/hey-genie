@@ -109,6 +109,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="15dp"
                         android:textStyle="bold"
+                        android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:text="@string/parking_lot_no_comment"
                         android:textSize="15sp"/>
