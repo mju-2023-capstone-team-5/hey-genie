@@ -1,11 +1,13 @@
 package org.sopar.presentation.reservation
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -36,10 +38,47 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         setObsever()
         setUp()
         setCommentDialog()
+        setDatePickerListener()
         setTimeListener()
         setNumberPicker()
         setCompleteBtnListener()
         setDurationPickerListener()
+    }
+
+    private fun setDatePickerListener() {
+        binding.hourlyDatePicker.setOnDateChangedListener { datePicker, _, _, _ ->
+            val cal = Calendar.getInstance()
+            cal.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
+            Log.d("cal time", cal.time.toString())
+            val day = cal.get(Calendar.DAY_OF_WEEK)
+            Log.d("day", day.toString())
+            when(day) {
+                1-> binding.textHourlyDayOfWeek.text = "일요일"
+                2-> binding.textHourlyDayOfWeek.text = "월요일"
+                3-> binding.textHourlyDayOfWeek.text = "화요일"
+                4-> binding.textHourlyDayOfWeek.text = "수요일"
+                5-> binding.textHourlyDayOfWeek.text = "목요일"
+                6-> binding.textHourlyDayOfWeek.text = "금요일"
+                7-> binding.textHourlyDayOfWeek.text = "토요일"
+            }
+        }
+
+        binding.monthlyDatePicker.setOnDateChangedListener { datePicker, _, _, _ ->
+            val cal = Calendar.getInstance()
+            cal.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
+            Log.d("cal time", cal.time.toString())
+            val day = cal.get(Calendar.DAY_OF_WEEK)
+            Log.d("day", day.toString())
+            when(day) {
+                1-> binding.textMonthlyDayOfWeek.text = "일요일"
+                2-> binding.textMonthlyDayOfWeek.text = "월요일"
+                3-> binding.textMonthlyDayOfWeek.text = "화요일"
+                4-> binding.textMonthlyDayOfWeek.text = "수요일"
+                5-> binding.textMonthlyDayOfWeek.text = "목요일"
+                6-> binding.textMonthlyDayOfWeek.text = "금요일"
+                7-> binding.textMonthlyDayOfWeek.text = "토요일"
+            }
+        }
     }
 
     private fun setCommentDialog() {
@@ -459,23 +498,23 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         val availableDays = reservationViewModel.parkingLot.value!!.availableDay
         val cal = Calendar.getInstance()
 //        cal.time = date
-        cal.set(date.year, date.monthValue, date.dayOfMonth)
+        cal.set(date.year, date.monthValue-1, date.dayOfMonth)
         Log.d("cal time", cal.time.toString())
         val day = cal.get(Calendar.DAY_OF_WEEK)
         Log.d("day", day.toString())
-        if ((day == 1) and ("금" in availableDays)) {
+        if ((day == 1) and ("일" in availableDays)) {
             return true
-        } else if ((day == 2) and ("토" in availableDays)) {
+        } else if ((day == 2) and ("월" in availableDays)) {
             return true
-        } else if ((day == 3) and ("일" in availableDays)) {
+        } else if ((day == 3) and ("화" in availableDays)) {
             return true
-        } else if ((day == 4) and ("월" in availableDays)) {
+        } else if ((day == 4) and ("수" in availableDays)) {
             return true
-        } else if ((day == 5) and ("화" in availableDays)) {
+        } else if ((day == 5) and ("목" in availableDays)) {
             return true
-        } else if ((day == 6) and ("수" in availableDays)) {
+        } else if ((day == 6) and ("금" in availableDays)) {
             return true
-        } else if ((day == 7) and ("목" in availableDays)) {
+        } else if ((day == 7) and ("토" in availableDays)) {
             return true
         }
         return false
