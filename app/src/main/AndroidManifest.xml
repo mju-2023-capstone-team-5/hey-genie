@@ -67,6 +67,20 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="${NATIVE_APP_KEY}" />
+
+        <service android:name=".SoparFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/base_blue" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_sopar_logo" />
+
     </application>
 
 </manifest>
