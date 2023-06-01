@@ -68,4 +68,8 @@ class ParkingLotRepositoryImpl @Inject constructor(
         return api.getUserInfoById(id)
     }
 
+    override suspend fun getCommentByPKId(id: Int): Response<List<Grade?>> {
+        return api.getCommentByPKId(id)
+    }
+
 }

@@ -32,4 +32,6 @@ interface ParkingLotRepository {
 
     suspend fun getUserInfoById(id: Int): Response<UserInfo>
 
+    suspend fun getCommentByPKId(id: Int): Response<List<Grade?>>
+
 }

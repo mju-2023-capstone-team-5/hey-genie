@@ -35,10 +35,23 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
         setTime()
         setObsever()
         setUp()
+        setCommentDialog()
         setTimeListener()
         setNumberPicker()
         setCompleteBtnListener()
         setDurationPickerListener()
+    }
+
+    private fun setCommentDialog() {
+        binding.layoutComment.setOnClickListener {
+            val dialog: CommentListDialog
+            if (args.parkingLot != null) {
+                dialog = CommentListDialog(reservationViewModel, args.parkingLot!!.id!!)
+            } else {
+                dialog = CommentListDialog(reservationViewModel, args.parkingLotId)
+            }
+            dialog.show(requireActivity().supportFragmentManager, "CommentListDialog")
+        }
     }
 
     private fun setObsever() {
