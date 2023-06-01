@@ -62,6 +62,7 @@ class ParkingLotRepositoryImpl @Inject constructor(
 
     override suspend fun registerParkingLotGrade(grade: Grade): Response<Grade> {
         return api.registerParkingLotGrade(grade)
+    }
 
     override suspend fun getUserInfoById(id: Int): Response<UserInfo> {
         return api.getUserInfoById(id)
