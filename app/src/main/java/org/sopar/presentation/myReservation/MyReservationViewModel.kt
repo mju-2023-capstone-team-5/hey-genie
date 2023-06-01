@@ -54,7 +54,7 @@ class MyReservationViewModel @Inject() constructor(
                 val userId = authRepository.getUId().first()
                 val reservation = parkingLotRepository.getReservationById(reservationId).body()
                 reservation?.let {
-                    val grade = Grade(comment ?: null, reservation.parkingLotId, rating, LocalDateTime.now().toString(), userId)
+                    val grade = Grade(comment ?: null, reservation.parkingLotId, reservationId, rating, LocalDateTime.now().toString(), userId)
                     Log.d("registerParkingLotGrade Request", grade.toString())
                     val response = parkingLotRepository.registerParkingLotGrade(grade)
                     Log.d("registerParkingLotGrade Response", response.toString())
