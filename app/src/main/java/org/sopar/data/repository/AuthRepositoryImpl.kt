@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import org.sopar.data.api.SoparRetrofitApi
+import org.sopar.data.remote.request.FCMToken
 import org.sopar.data.remote.request.LoginRequest
 import org.sopar.data.remote.request.UserRegisterRequest
 import org.sopar.data.remote.response.LoginResponse
@@ -92,6 +93,10 @@ class AuthRepositoryImpl @Inject constructor(
             }
     }
 
+    override suspend fun addFCMToken(userId: Int, fcmToken: FCMToken): Response<String> {
+        return api.addFCMToken(userId, fcmToken)
+    }
+
     private object PreferencesKeys {
         // jwt
         val JWT_KEY: Preferences.Key<String> = stringPreferencesKey("jwt_key")
@@ -100,5 +105,4 @@ class AuthRepositoryImpl @Inject constructor(
         //accessToken
         val ACCESS_TOKEN_KEY: Preferences.Key<String> = stringPreferencesKey("access_token_key")
     }
-
 }
