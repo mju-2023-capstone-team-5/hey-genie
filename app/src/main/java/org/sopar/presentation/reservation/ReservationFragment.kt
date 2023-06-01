@@ -70,6 +70,7 @@ class ReservationFragment : BaseFragment<FragmentReservationBinding>(R.layout.fr
 
         reservationViewModel.getParkingLotState.observe(viewLifecycleOwner) { state ->
             if (state == NetworkState.FAIL) {
+                Log.d("ReservationFragment", "getparkingLotState Error")
                 val dialog = BaseErrorDialog(R.string.base_error)
                 dialog.show(requireActivity().supportFragmentManager, "GetParkingLotError")
             }

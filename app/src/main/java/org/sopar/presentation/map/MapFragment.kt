@@ -114,6 +114,7 @@ class MapFragment: BaseFragment<FragmentMapBinding>(R.layout.fragment_map) {
     private fun setObserve() {
         mapViewModel.getParkingLotState.observe(viewLifecycleOwner) { state ->
             if (state == NetworkState.FAIL) {
+                Log.d("mapFragment", "getParkingLotState Error")
                 val dialog = BaseErrorDialog(R.string.base_error)
                 dialog.show(requireActivity().supportFragmentManager, "BaseErrorDialog")
             }

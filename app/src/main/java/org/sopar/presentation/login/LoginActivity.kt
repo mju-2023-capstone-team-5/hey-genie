@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import android.widget.Toast
@@ -71,6 +72,7 @@ class LoginActivity: AppCompatActivity() {
         // 기존 유저 로그인 성공
         loginViewModel.loginState.observe(this) { state ->
             if (state == NetworkState.FAIL) {
+                Log.d("loginActivity", "loginstate error")
                 val dialog = BaseErrorDialog(R.string.base_error)
                 dialog.show(supportFragmentManager, "BaseErrorDialog")
             }

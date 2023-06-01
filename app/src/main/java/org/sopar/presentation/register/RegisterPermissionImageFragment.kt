@@ -3,6 +3,7 @@ package org.sopar.presentation.register
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,14 +42,23 @@ class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionIm
     }
 
     private fun setObserve() {
-        viewModel.registerStatus.observe(viewLifecycleOwner) { state ->
+        viewModel.registerPKState.observe(viewLifecycleOwner) { state ->
             if (state == NetworkState.SUCCESS) {
                 registerImage()
-            } else {
+            } else if (state == NetworkState.FAIL) {
+                Log.d("RegisterPermissionImageFragment", "registerStatus Error")
                 val dialog = BaseErrorDialog(R.string.base_error)
                 dialog.show(requireActivity().supportFragmentManager, "RegisterErrorDialog")
             }
 
+        }
+
+        viewModel.registerImageState.observe(viewLifecycleOwner) { state ->
+            if (state == NetworkState.SUCCESS) {
+                Toast.makeText(context, "등록이 완료되었습니다!", Toast.LENGTH_SHORT).show()
+                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
+                viewPager.setCurrentItem(8, true)
+            }
         }
     }
 
@@ -101,12 +111,7 @@ class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionIm
             if (viewModel.permissionUrl == null) {
                 Toast.makeText(context, "토지 대장을 등록해주세요!", Toast.LENGTH_SHORT).show()
             } else {
-                val viewPager = requireActivity().findViewById<ViewPager2>(R.id.register_view_pager)
-                viewPager.setCurrentItem(8, true)
-
                 registerParkingLot()
-
-                Toast.makeText(context, "등록이 완료되었습니다!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -149,26 +154,26 @@ class RegisterPermissionImageFragment: BaseFragment<FragmentRegisterPermissionIm
     }
 
 
-        private val requestGalleryLauncher = registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted ->
-            if (isGranted) {
-                getGalleryLauncher.launch("image/*")
-            } else {
-                val dialog = BaseErrorDialog(R.string.permission_error)
-                dialog.show(requireActivity().supportFragmentManager, "reques")
-            }
+    private val requestGalleryLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            getGalleryLauncher.launch("image/*")
+        } else {
+            val dialog = BaseErrorDialog(R.string.permission_error)
+            dialog.show(requireActivity().supportFragmentManager, "reques")
         }
+    }
 
-        private val getGalleryLauncher = registerForActivityResult(
-            ActivityResultContracts.GetContent()
-        ) { uri ->
-            uri?.let {
-                viewModel.permissionUrl = it.toString()
-                binding.imageDocument.visibility = View.VISIBLE
-                binding.imageDocument.setImageURI(it)
-                binding.imageGallery.visibility = View.GONE
-            }
+    private val getGalleryLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        uri?.let {
+            viewModel.permissionUrl = it.toString()
+            binding.imageDocument.visibility = View.VISIBLE
+            binding.imageDocument.setImageURI(it)
+            binding.imageGallery.visibility = View.GONE
         }
+    }
 
 }

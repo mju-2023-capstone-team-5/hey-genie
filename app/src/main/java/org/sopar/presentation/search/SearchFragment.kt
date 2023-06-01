@@ -3,6 +3,7 @@ package org.sopar.presentation.search
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     private fun setObserver() {
         searchViewModel.searchState.observe(viewLifecycleOwner) { state ->
             if (state == NetworkState.FAIL) {
+                Log.d("SearchFragment", "searchState Error")
                 val dialog = BaseErrorDialog(R.string.base_error)
                 dialog.show(requireActivity().supportFragmentManager, "BaseErrorDialog")
             }

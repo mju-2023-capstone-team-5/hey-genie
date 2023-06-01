@@ -55,8 +55,10 @@ class RegisterViewModel @Inject constructor(
     private val _searchResult = MutableLiveData<List<Place>>(listOf())
     val searchResult: LiveData<List<Place>> get() = _searchResult
 
-    private val _registerStatus = MutableLiveData(NetworkState.LOADING)
-    val registerStatus: LiveData<NetworkState> get() = _registerStatus
+    private val _registerPKState = MutableLiveData(NetworkState.LOADING)
+    val registerPKState: LiveData<NetworkState> get() = _registerPKState
+    private val _registerImageState = MutableLiveData(NetworkState.LOADING)
+    val registerImageState: LiveData<NetworkState> get() = _registerImageState
 
     private var _parkingLotId: Int? = null
     private val parkingLotId: Int get() = _parkingLotId!!
@@ -82,15 +84,15 @@ class RegisterViewModel @Inject constructor(
                 if (response.isSuccessful) {
                     Log.d("register parkingLot result", response.body().toString())
                     _parkingLotId = response.body()!!.id
-                    _registerStatus.postValue(NetworkState.SUCCESS)
+                    _registerPKState.postValue(NetworkState.SUCCESS)
                 } else {
                     Log.d("register parkingLot result", response.code().toString())
-                    _registerStatus.postValue(NetworkState.FAIL)
+                    _registerPKState.postValue(NetworkState.FAIL)
                 }
 
             } catch (e: Exception) {
                 Log.d("register parkingLot error", e.toString())
-                _registerStatus.postValue(NetworkState.FAIL)
+                _registerPKState.postValue(NetworkState.FAIL)
             }
         }
     }
@@ -106,13 +108,11 @@ class RegisterViewModel @Inject constructor(
                 }
 
                 val response = parkingLotRepository.registerParkingLotImage(parkingLotId, imageMultipartBody!!)
-                Log.d("register parkinglot image", response.code().toString())
-                if (! response.isSuccessful) {
-                    _registerStatus.postValue(NetworkState.FAIL)
-                }
+                _registerImageState.postValue(NetworkState.SUCCESS)
 
             } catch (e: Exception) {
                 Log.d("register parkingLot image", e.toString())
+                _registerImageState.postValue(NetworkState.SUCCESS)
             }
         }
     }
@@ -128,13 +128,11 @@ class RegisterViewModel @Inject constructor(
                 }
 
                 val response = parkingLotRepository.registerPermissionImage(parkingLotId, listOf(imageMultipartBody!!))
-                if (! response.isSuccessful) {
-                    Log.d("register permission image", response.code().toString())
-                    _registerStatus.postValue(NetworkState.FAIL)
-                }
+                _registerImageState.postValue(NetworkState.SUCCESS)
 
             } catch (e: Exception) {
                 Log.d("register permission image", e.toString())
+                _registerImageState.postValue(NetworkState.SUCCESS)
             }
         }
     }
