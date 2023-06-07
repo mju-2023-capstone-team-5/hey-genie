@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/selector_custom_rating</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:maxHeight">35dip</item>
+    </style>
+
+    <style name="CustomLargeRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/selector_custom_rating_large</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">50dip</item>
+    </style>
+
+    <style name="CustomCommentRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/selector_custom_comment_rating</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">50dip</item>
+    </style>
+</resources>

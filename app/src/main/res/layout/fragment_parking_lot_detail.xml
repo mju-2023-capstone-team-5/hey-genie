@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="75dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.parkingLotDetail.ParkingLotDetailFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layout_register_info"
+                android:id="@+id/parking_lot_comment"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/parking_rating"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/base_gray_round_shape"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="총 "/>
+
+                        <TextView
+                            android:id="@+id/text_comment_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:text="0"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/base_blue"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="명의 후기를 요약해봤어요!️"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <RatingBar
+                        android:id="@+id/parking_lot_Rating"
+                        android:layout_marginTop="10dp"
+                        android:progressBackgroundTint="@color/base_blue"
+                        android:progressTint="@color/base_blue"
+                        style="@style/CustomLargeRatingBarStyle"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        android:isIndicator="true"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/quote_start"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textSize="23sp"/>
+
+                        <TextView
+                            android:id="@+id/text_parking_lot_comment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="15dp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/parking_lot_no_comment"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/quote_end"
+                            android:textSize="23sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_register_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toBottomOf="@id/parking_lot_comment"
+                app:layout_constraintBottom_toTopOf="@id/btn_delete_parking_lot"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/layout_info"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_parking_lot_name"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_address"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_parking_lot_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_space"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_parking_lot_space"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_sharing_days"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_sharing_days"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_sharing_times"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_sharing_times"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_car_types"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_car_types"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_hourly_rate"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_hourly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:text="제공 안 함"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_monthly_rate"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_monthly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:text="제공 안 함"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_up_phone_number"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_text_caution"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/text_caution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12sp"
+                        android:layout_marginTop="7dp"
+                        android:text="없음"
+                        android:background="@drawable/base_white_round_shape"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_delete_parking_lot"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="삭제"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/layout_register_info"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="@id/layout_register_info"
+                app:layout_constraintLeft_toLeftOf="@id/layout_register_info"
+                android:background="@drawable/base_blue_round_shape"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

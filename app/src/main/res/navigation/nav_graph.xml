@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:label="@string/fragment_map"
+    app:startDestination="@id/fragment_map">
+
+    <fragment
+        android:id="@+id/fragment_map"
+        android:name="org.sopar.presentation.map.MapFragment"
+        android:label="@string/fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_fragment_map_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="place"
+            app:argType="org.sopar.data.remote.response.Place"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_fragment_map_to_reservationFragment2"
+            app:destination="@id/reservationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="org.sopar.presentation.search.SearchFragment"
+        android:label="@string/fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_fragment_map"
+            app:destination="@id/fragment_map"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservationFragment"
+        android:name="org.sopar.presentation.reservation.ReservationFragment"
+        android:label="@string/fragment_reservation"
+        tools:layout="@layout/fragment_reservation" >
+        <argument
+            android:name="parkingLot"
+            app:argType="org.sopar.data.remote.response.ParkingLot"
+            app:nullable="true" />
+        <argument
+            android:name="isHourly"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_reservationFragment_to_payFragment"
+            app:destination="@id/payFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="parkingLotId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="org.sopar.presentation.pay.PayFragment"
+        android:label="@string/fragment_pay"
+        tools:layout="@layout/fragment_pay" >
+        <argument
+            android:name="parkingLot"
+            app:argType="org.sopar.data.remote.response.ParkingLot" />
+        <argument
+            android:name="hourlyReservationInfo"
+            app:argType="org.sopar.data.remote.request.HourlyReservation"
+            app:nullable="true" />
+        <argument
+            android:name="monthlyReservationInfo"
+            app:argType="org.sopar.data.remote.request.MonthlyReservation"
+            app:nullable="true" />
+        <argument
+            android:name="price"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_payFragment_to_fragment_map"
+            app:destination="@id/fragment_map"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_my_parking_lot"
+        android:name="org.sopar.presentation.myParkingLot.MyParkingLot"
+        android:label="@string/fragment_my_parking_lot"
+        tools:layout="@layout/fragment_my_parking_lot" >
+        <action
+            android:id="@+id/action_fragment_my_parking_lot_to_parkingLotDetailFragment"
+            app:destination="@id/parkingLotDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_my_reservation"
+        android:name="org.sopar.presentation.myReservation.MyReservation"
+        android:label="@string/fragment_my_reservation"
+        tools:layout="@layout/fragment_my_reservation" >
+        <action
+            android:id="@+id/action_fragment_my_reservation_to_reservationDetail"
+            app:destination="@id/reservationDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/parkingLotDetailFragment"
+        android:name="org.sopar.presentation.parkingLotDetail.ParkingLotDetailFragment"
+        android:label="@string/fragment_my_parking_lot"
+        tools:layout="@layout/fragment_parking_lot_detail">
+        <argument
+            android:name="parkingLot"
+            app:argType="org.sopar.data.remote.response.ParkingLot" />
+        <action
+            android:id="@+id/action_parkingLotDetailFragment_to_fragment_my_parking_lot"
+            app:destination="@id/fragment_my_parking_lot"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservationDetail"
+        android:name="org.sopar.presentation.reservationDetail.ReservationDetail"
+        android:label="@string/fragment_my_reservation">
+        <argument
+            android:name="reservationId"
+            app:argType="integer" />
+        <argument
+            android:name="parkingLotName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_reservationDetail_to_fragment_my_reservation"
+            app:destination="@id/fragment_my_reservation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+</navigation>

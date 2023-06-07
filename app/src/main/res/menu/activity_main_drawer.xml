@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/fragment_map"
+            android:icon="@drawable/ic_nav_map"
+            android:title="지도"/>
+        <item
+            android:id="@+id/fragment_my_parking_lot"
+            android:icon="@drawable/ic_nav_parking_lot"
+            android:title="주차장 관리"/>
+        <item
+            android:id="@+id/fragment_my_reservation"
+            android:icon="@drawable/ic_nav_reservation"
+            android:title="예약 관리"/>
+    </group>
+
+    <group
+        android:id="@+id/etc"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/btn_home"
+            android:icon="@drawable/ic_nav_home"
+            android:title="메인"/>
+        <item
+            android:id="@+id/btn_logout"
+            android:icon="@drawable/ic_nav_logout"
+            android:title="로그아웃"/>
+    </group>
+
+
+</menu>

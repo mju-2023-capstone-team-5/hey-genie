@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.reservation.ReservationFragment">
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/parking_lot_comment"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/parking_rating"
+                android:layout_marginStart="35dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layout_comment"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:padding="20dp"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="총 "/>
+
+                    <TextView
+                        android:id="@+id/text_comment_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:text="0"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/base_blue"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="명의 후기를 요약해봤어요!️"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <RatingBar
+                    android:id="@+id/parking_lot_Rating"
+                    android:layout_marginTop="10dp"
+                    android:progressBackgroundTint="@color/base_blue"
+                    android:progressTint="@color/base_blue"
+                    style="@style/CustomLargeRatingBarStyle"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    android:isIndicator="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"/>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/quote_start"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"
+                        android:textSize="23sp"/>
+
+                    <TextView
+                        android:id="@+id/text_parking_lot_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/parking_lot_no_comment"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/quote_end"
+                        android:textSize="23sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reservation_parking_lot_info"
+                android:layout_marginStart="35dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layout_parking_lot_info"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:padding="20dp"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_parking_lot_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_parking_lot_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_parking_lot_address"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text_parking_lot_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_min_cost"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text_min_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:id="@+id/text_monthly_surcharge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_monthly_surcharge"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text_hourly_surcharge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_hourly_surcharge"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text_surcharge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:id="@+id/text_available_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_available_days"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/text_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reservation_info"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layout_monthly"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:padding="20dp"
+                android:visibility="gone"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toBottomOf="@id/layout_parking_lot_info"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reservation_date"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/text_monthly_day_of_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <DatePicker
+                    android:id="@+id/monthly_date_picker"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_white_round_shape"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_month_duration"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+
+                <NumberPicker
+                    android:id="@+id/monthly_duration_picker"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_white_round_shape"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_hourly"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:padding="20dp"
+                android:visibility="gone"
+                android:background="@drawable/base_gray_round_shape"
+                app:layout_constraintTop_toBottomOf="@id/layout_parking_lot_info"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reservation_date"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/text_hourly_day_of_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <DatePicker
+                    android:id="@+id/hourly_date_picker"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_white_round_shape"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@string/register_step_time_setting"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/reservation_available_time"
+                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/base_white_round_shape"
+                    android:padding="10dp">
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group1"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group2"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group3"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group4"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group5"
+                        layout="@layout/item_time_slot"/>
+
+                    <include
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/time_slot_group6"
+                        layout="@layout/item_time_slot"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_reservation_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_blue"
+            android:textColor="@color/white"
+            android:text="@string/reservation_btn_complete"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

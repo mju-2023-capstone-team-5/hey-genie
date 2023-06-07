@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.map.MapFragment">
+
+    <RelativeLayout
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/text_map_search"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="65dp"
+        android:hint="@string/map_search_hint"
+        android:background="@drawable/base_white_round_shape"/>
+
+    <LinearLayout
+        android:id="@+id/layout_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="45dp"
+        android:orientation="vertical"
+        android:background="@drawable/bottom_sheet_blue_round_shape"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="@string/map_parking_lot_list"/>
+            <ImageView
+                android:contentDescription="@string/icon_bottom_sheet"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_bottom_sheet"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_blue_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:text="new"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_green_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:text="4점▲"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_yellow_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:text="2.5점▲"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_red_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:text="2.5점 ▽"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_notice_parking_lot"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:text="범위 내 이용 가능한 주차장이 없습니다!🥲"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_parking_lot"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
